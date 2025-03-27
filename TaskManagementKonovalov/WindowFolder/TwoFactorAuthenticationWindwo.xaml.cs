@@ -133,7 +133,7 @@ namespace TaskManagementKonovalov.WindowFolder
             else
             {
                 MBClass.ErrorMB("Код был введен не верно");
-            }
+            }//
         }
 
         private void ResendBtn_Click(object sender, RoutedEventArgs e)
