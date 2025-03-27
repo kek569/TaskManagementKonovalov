@@ -1,0 +1,92 @@
+﻿<Window x:Class="TaskManagementKonovalov.WindowFolder.TwoFactorAuthenticationWindwo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskManagementKonovalov.WindowFolder"
+                mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Height="350"
+        Width="350"
+        AllowsTransparency="True"
+        ResizeMode="CanMinimize"
+        Background="{x:Null}"
+        Icon="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/Logo.png">
+    <Border Style="{DynamicResource FonBorder}">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.RowSpan="2"
+                  Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+                <Border Style="{DynamicResource BorderTop}"
+                Grid.ColumnSpan="4"/>
+                <Label x:Name="AuthorizationLb"
+                    Content="ПОДВЕРДИТЕ КОД"
+                       HorizontalAlignment="Left"
+               Style="{DynamicResource LabelLogo}"
+               Grid.Column="1"
+               Grid.ColumnSpan="2"
+                       Margin="35, 0, 0, 0"
+               Foreground="{DynamicResource FillFontOne}"/>
+
+                <Image Style="{DynamicResource CloseIm}"
+            Grid.Column="1"
+                       Width="35"
+                       Height="35"
+                       MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+
+
+                <Label x:Name="TextLb"
+                       Content="Вам на почту был выслан код&#10;подтверждения, введите его&#10;здесь для подтверждение входа"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+               Grid.Row="2"
+               Grid.Column="1"
+               Style="{DynamicResource LabelNormal}"/>
+                <TextBox x:Name="CheckTb"
+                 Grid.Row="4"
+                 Grid.Column="1"
+                         SpellCheck.IsEnabled="False"/>
+
+                <Button x:Name="ResendBtn"
+                        Content="Повтроно прислать"
+                        Grid.Column="1"
+                        Grid.Row="6"
+                        Margin="10,10,151,10"
+                        Click="ResendBtn_Click"/>
+
+                <Button x:Name="ConfirmationBtn"
+                        Content="Подвердить"
+                Grid.Column="1"
+                Grid.Row="6"
+                        Margin="184,10,10,10"
+                Click="ConfirmationBtn_Click"/>
+
+
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,1238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище DBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Name="IdCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCategory" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CheckSheet">
+          <Key>
+            <PropertyRef Name="IdCheckSheet" />
+          </Key>
+          <Property Name="IdCheckSheet" Type="int" Nullable="false" />
+          <Property Name="NameCheckSheet" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="IdStatusTask" Type="int" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="IdGender" />
+          </Key>
+          <Property Name="IdGender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameGender" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IssuedByWhom">
+          <Key>
+            <PropertyRef Name="IdIssuedByWhom" />
+          </Key>
+          <Property Name="IdIssuedByWhom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlaceIssuePassport" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="DepartmentCode" Type="nvarchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobTitle">
+          <Key>
+            <PropertyRef Name="IdJobTitle" />
+          </Key>
+          <Property Name="IdJobTitle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameJobTitle" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Passport">
+          <Key>
+            <PropertyRef Name="IdPassport" />
+          </Key>
+          <Property Name="IdPassport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeriesPassport" Type="int" Nullable="false" />
+          <Property Name="NumberPassport" Type="int" Nullable="false" />
+          <Property Name="DepartmentCodePassport" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="RegistrationAddressPassport" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdIssuedByWhom" Type="int" Nullable="false" />
+          <Property Name="IdStatusDelete" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prirority">
+          <Key>
+            <PropertyRef Name="IdPrirority" />
+          </Key>
+          <Property Name="IdPrirority" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamePrirority" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="IdReport" />
+          </Key>
+          <Property Name="IdReport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountOfCompletedLowTasks" Type="int" Nullable="false" />
+          <Property Name="CountOfCompletedMediumTasks" Type="int" Nullable="false" />
+          <Property Name="CountOfCompletedHeightTasks" Type="int" Nullable="false" />
+          <Property Name="DatePeriodStart" Type="date" Nullable="false" />
+          <Property Name="DatePriodEnd" Type="date" Nullable="false" />
+          <Property Name="CountOfCompletedDeadlines" Type="int" Nullable="false" />
+          <Property Name="CountOfUncomplatedDeadlines" Type="int" Nullable="false" />
+          <Property Name="DateReport" Type="date" Nullable="false" />
+          <Property Name="IdStaff" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRole" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="IdStaff" />
+          </Key>
+          <Property Name="IdStaff" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastNameStaff" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="FirstNameStaff" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="MiddleNameStaff" Type="nvarchar" MaxLength="80" />
+          <Property Name="NumberPhoneStaff" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="DateOfBirthStaff" Type="date" Nullable="false" />
+          <Property Name="IdGender" Type="int" Nullable="false" />
+          <Property Name="AdressStaff" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdJobTitle" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="PhotoStaff" Type="varbinary(max)" />
+          <Property Name="IdPassport" Type="int" Nullable="false" />
+          <Property Name="IdStatusDelete" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusDeadline">
+          <Key>
+            <PropertyRef Name="IdStatusDeadline" />
+          </Key>
+          <Property Name="IdStatusDeadline" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameStatusDeadline" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusDelete">
+          <Key>
+            <PropertyRef Name="IdStatusDelete" />
+          </Key>
+          <Property Name="IdStatusDelete" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameStatusDelete" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusTask">
+          <Key>
+            <PropertyRef Name="IdStatusTask" />
+          </Key>
+          <Property Name="IdStatusTask" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameStatusTask" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusTwoFactorAuthentication">
+          <Key>
+            <PropertyRef Name="IdStatusTwoFactorAuthentication" />
+          </Key>
+          <Property Name="IdStatusTwoFactorAuthentication" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameStatusTwoFactorAuthentication" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="IdTask" />
+          </Key>
+          <Property Name="IdTask" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameTask" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="DescriptionTask" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdPrirority" Type="int" Nullable="false" />
+          <Property Name="IdStaff" Type="int" Nullable="false" />
+          <Property Name="DateDue" Type="date" Nullable="false" />
+          <Property Name="IdStatusTask" Type="int" Nullable="false" />
+          <Property Name="CommentsTask" Type="nvarchar" MaxLength="150" />
+          <Property Name="IdStatusDelete" Type="int" Nullable="false" />
+          <Property Name="IdCategory" Type="int" Nullable="false" />
+          <Property Name="IdCheckSheet" Type="int" />
+          <Property Name="IdStatusDeadline" Type="int" Nullable="false" />
+          <Property Name="DateDeadline" Type="date" />
+          <Property Name="DateStartTask" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginUser" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="PasswordUser" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="IdStatusTwoFactorAuthentication" Type="int" Nullable="false" />
+          <Property Name="IdStatusDelete" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CheckSheet_StatusTask">
+          <End Role="StatusTask" Type="Self.StatusTask" Multiplicity="0..1" />
+          <End Role="CheckSheet" Type="Self.CheckSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusTask">
+              <PropertyRef Name="IdStatusTask" />
+            </Principal>
+            <Dependent Role="CheckSheet">
+              <PropertyRef Name="IdStatusTask" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passport_IssuedByWhom">
+          <End Role="IssuedByWhom" Type="Self.IssuedByWhom" Multiplicity="1" />
+          <End Role="Passport" Type="Self.Passport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IssuedByWhom">
+              <PropertyRef Name="IdIssuedByWhom" />
+            </Principal>
+            <Dependent Role="Passport">
+              <PropertyRef Name="IdIssuedByWhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passport_StatusDelete">
+          <End Role="StatusDelete" Type="Self.StatusDelete" Multiplicity="1" />
+          <End Role="Passport" Type="Self.Passport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusDelete">
+              <PropertyRef Name="IdStatusDelete" />
+            </Principal>
+            <Dependent Role="Passport">
+              <PropertyRef Name="IdStatusDelete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Report_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="Report" Type="Self.Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="IdStaff" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="IdStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="IdGender" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_JobTitle">
+          <End Role="JobTitle" Type="Self.JobTitle" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitle">
+              <PropertyRef Name="IdJobTitle" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="IdJobTitle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Passport">
+          <End Role="Passport" Type="Self.Passport" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passport">
+              <PropertyRef Name="IdPassport" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="IdPassport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_StatusDelete">
+          <End Role="StatusDelete" Type="Self.StatusDelete" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusDelete">
+              <PropertyRef Name="IdStatusDelete" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="IdStatusDelete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_CheckSheet">
+          <End Role="CheckSheet" Type="Self.CheckSheet" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CheckSheet">
+              <PropertyRef Name="IdCheckSheet" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdCheckSheet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Prirority">
+          <End Role="Prirority" Type="Self.Prirority" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prirority">
+              <PropertyRef Name="IdPrirority" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdPrirority" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="IdStaff" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_StatusDeadline">
+          <End Role="StatusDeadline" Type="Self.StatusDeadline" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusDeadline">
+              <PropertyRef Name="IdStatusDeadline" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdStatusDeadline" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_StatusDelete">
+          <End Role="StatusDelete" Type="Self.StatusDelete" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusDelete">
+              <PropertyRef Name="IdStatusDelete" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdStatusDelete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_StatusTask">
+          <End Role="StatusTask" Type="Self.StatusTask" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusTask">
+              <PropertyRef Name="IdStatusTask" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdStatusTask" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_StatusDelete">
+          <End Role="StatusDelete" Type="Self.StatusDelete" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusDelete">
+              <PropertyRef Name="IdStatusDelete" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdStatusDelete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_StatusTwoFactorAuthentication">
+          <End Role="StatusTwoFactorAuthentication" Type="Self.StatusTwoFactorAuthentication" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusTwoFactorAuthentication">
+              <PropertyRef Name="IdStatusTwoFactorAuthentication" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdStatusTwoFactorAuthentication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DBModelContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CheckSheet" EntityType="Self.CheckSheet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IssuedByWhom" EntityType="Self.IssuedByWhom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobTitle" EntityType="Self.JobTitle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Passport" EntityType="Self.Passport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prirority" EntityType="Self.Prirority" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusDeadline" EntityType="Self.StatusDeadline" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusDelete" EntityType="Self.StatusDelete" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusTask" EntityType="Self.StatusTask" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusTwoFactorAuthentication" EntityType="Self.StatusTwoFactorAuthentication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CheckSheet_StatusTask" Association="Self.FK_CheckSheet_StatusTask">
+            <End Role="StatusTask" EntitySet="StatusTask" />
+            <End Role="CheckSheet" EntitySet="CheckSheet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passport_IssuedByWhom" Association="Self.FK_Passport_IssuedByWhom">
+            <End Role="IssuedByWhom" EntitySet="IssuedByWhom" />
+            <End Role="Passport" EntitySet="Passport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passport_StatusDelete" Association="Self.FK_Passport_StatusDelete">
+            <End Role="StatusDelete" EntitySet="StatusDelete" />
+            <End Role="Passport" EntitySet="Passport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Report_Staff" Association="Self.FK_Report_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Report" EntitySet="Report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Gender" Association="Self.FK_Staff_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_JobTitle" Association="Self.FK_Staff_JobTitle">
+            <End Role="JobTitle" EntitySet="JobTitle" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Passport" Association="Self.FK_Staff_Passport">
+            <End Role="Passport" EntitySet="Passport" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_StatusDelete" Association="Self.FK_Staff_StatusDelete">
+            <End Role="StatusDelete" EntitySet="StatusDelete" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_User" Association="Self.FK_Staff_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Category" Association="Self.FK_Task_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_CheckSheet" Association="Self.FK_Task_CheckSheet">
+            <End Role="CheckSheet" EntitySet="CheckSheet" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Prirority" Association="Self.FK_Task_Prirority">
+            <End Role="Prirority" EntitySet="Prirority" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Staff" Association="Self.FK_Task_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_StatusDeadline" Association="Self.FK_Task_StatusDeadline">
+            <End Role="StatusDeadline" EntitySet="StatusDeadline" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_StatusDelete" Association="Self.FK_Task_StatusDelete">
+            <End Role="StatusDelete" EntitySet="StatusDelete" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_StatusTask" Association="Self.FK_Task_StatusTask">
+            <End Role="StatusTask" EntitySet="StatusTask" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_StatusDelete" Association="Self.FK_User_StatusDelete">
+            <End Role="StatusDelete" EntitySet="StatusDelete" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_StatusTwoFactorAuthentication" Association="Self.FK_User_StatusTwoFactorAuthentication">
+            <End Role="StatusTwoFactorAuthentication" EntitySet="StatusTwoFactorAuthentication" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Name="IdCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCategory" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_Category" FromRole="Category" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="CheckSheet">
+          <Key>
+            <PropertyRef Name="IdCheckSheet" />
+          </Key>
+          <Property Name="IdCheckSheet" Type="Int32" Nullable="false" />
+          <Property Name="NameCheckSheet" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdStatusTask" Type="Int32" />
+          <NavigationProperty Name="StatusTask" Relationship="Self.FK_CheckSheet_StatusTask" FromRole="CheckSheet" ToRole="StatusTask" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_CheckSheet" FromRole="CheckSheet" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="IdGender" />
+          </Key>
+          <Property Name="IdGender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameGender" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_Gender" FromRole="Gender" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="IssuedByWhom">
+          <Key>
+            <PropertyRef Name="IdIssuedByWhom" />
+          </Key>
+          <Property Name="IdIssuedByWhom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlaceIssuePassport" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DepartmentCode" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Passport" Relationship="Self.FK_Passport_IssuedByWhom" FromRole="IssuedByWhom" ToRole="Passport" />
+        </EntityType>
+        <EntityType Name="JobTitle">
+          <Key>
+            <PropertyRef Name="IdJobTitle" />
+          </Key>
+          <Property Name="IdJobTitle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameJobTitle" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_JobTitle" FromRole="JobTitle" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Passport">
+          <Key>
+            <PropertyRef Name="IdPassport" />
+          </Key>
+          <Property Name="IdPassport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeriesPassport" Type="Int32" Nullable="false" />
+          <Property Name="NumberPassport" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentCodePassport" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegistrationAddressPassport" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdIssuedByWhom" Type="Int32" Nullable="false" />
+          <Property Name="IdStatusDelete" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="IssuedByWhom" Relationship="Self.FK_Passport_IssuedByWhom" FromRole="Passport" ToRole="IssuedByWhom" />
+          <NavigationProperty Name="StatusDelete" Relationship="Self.FK_Passport_StatusDelete" FromRole="Passport" ToRole="StatusDelete" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_Passport" FromRole="Passport" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Prirority">
+          <Key>
+            <PropertyRef Name="IdPrirority" />
+          </Key>
+          <Property Name="IdPrirority" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamePrirority" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_Prirority" FromRole="Prirority" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="IdReport" />
+          </Key>
+          <Property Name="IdReport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountOfCompletedLowTasks" Type="Int32" Nullable="false" />
+          <Property Name="CountOfCompletedMediumTasks" Type="Int32" Nullable="false" />
+          <Property Name="CountOfCompletedHeightTasks" Type="Int32" Nullable="false" />
+          <Property Name="DatePeriodStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DatePriodEnd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CountOfCompletedDeadlines" Type="Int32" Nullable="false" />
+          <Property Name="CountOfUncomplatedDeadlines" Type="Int32" Nullable="false" />
+          <Property Name="DateReport" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdStaff" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Report_Staff" FromRole="Report" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRole" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="IdStaff" />
+          </Key>
+          <Property Name="IdStaff" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastNameStaff" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstNameStaff" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleNameStaff" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="NumberPhoneStaff" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfBirthStaff" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdGender" Type="Int32" Nullable="false" />
+          <Property Name="AdressStaff" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdJobTitle" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="PhotoStaff" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IdPassport" Type="Int32" Nullable="false" />
+          <Property Name="IdStatusDelete" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Staff_Gender" FromRole="Staff" ToRole="Gender" />
+          <NavigationProperty Name="JobTitle" Relationship="Self.FK_Staff_JobTitle" FromRole="Staff" ToRole="JobTitle" />
+          <NavigationProperty Name="Passport" Relationship="Self.FK_Staff_Passport" FromRole="Staff" ToRole="Passport" />
+          <NavigationProperty Name="Report" Relationship="Self.FK_Report_Staff" FromRole="Staff" ToRole="Report" />
+          <NavigationProperty Name="StatusDelete" Relationship="Self.FK_Staff_StatusDelete" FromRole="Staff" ToRole="StatusDelete" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Staff_User" FromRole="Staff" ToRole="User" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_Staff" FromRole="Staff" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="StatusDeadline">
+          <Key>
+            <PropertyRef Name="IdStatusDeadline" />
+          </Key>
+          <Property Name="IdStatusDeadline" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameStatusDeadline" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_StatusDeadline" FromRole="StatusDeadline" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="StatusDelete">
+          <Key>
+            <PropertyRef Name="IdStatusDelete" />
+          </Key>
+          <Property Name="IdStatusDelete" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameStatusDelete" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Passport" Relationship="Self.FK_Passport_StatusDelete" FromRole="StatusDelete" ToRole="Passport" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_StatusDelete" FromRole="StatusDelete" ToRole="Staff" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_StatusDelete" FromRole="StatusDelete" ToRole="Task" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_StatusDelete" FromRole="StatusDelete" ToRole="User" />
+        </EntityType>
+        <EntityType Name="StatusTask">
+          <Key>
+            <PropertyRef Name="IdStatusTask" />
+          </Key>
+          <Property Name="IdStatusTask" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameStatusTask" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CheckSheet" Relationship="Self.FK_CheckSheet_StatusTask" FromRole="StatusTask" ToRole="CheckSheet" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_StatusTask" FromRole="StatusTask" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="StatusTwoFactorAuthentication">
+          <Key>
+            <PropertyRef Name="IdStatusTwoFactorAuthentication" />
+          </Key>
+          <Property Name="IdStatusTwoFactorAuthentication" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameStatusTwoFactorAuthentication" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_StatusTwoFactorAuthentication" FromRole="StatusTwoFactorAuthentication" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="IdTask" />
+          </Key>
+          <Property Name="IdTask" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameTask" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DescriptionTask" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdPrirority" Type="Int32" Nullable="false" />
+          <Property Name="IdStaff" Type="Int32" Nullable="false" />
+          <Property Name="DateDue" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdStatusTask" Type="Int32" Nullable="false" />
+          <Property Name="CommentsTask" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IdStatusDelete" Type="Int32" Nullable="false" />
+          <Property Name="IdCategory" Type="Int32" Nullable="false" />
+          <Property Name="IdCheckSheet" Type="Int32" />
+          <Property Name="IdStatusDeadline" Type="Int32" Nullable="false" />
+          <Property Name="DateDeadline" Type="DateTime" Precision="0" />
+          <Property Name="DateStartTask" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Task_Category" FromRole="Task" ToRole="Category" />
+          <NavigationProperty Name="CheckSheet" Relationship="Self.FK_Task_CheckSheet" FromRole="Task" ToRole="CheckSheet" />
+          <NavigationProperty Name="Prirority" Relationship="Self.FK_Task_Prirority" FromRole="Task" ToRole="Prirority" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Task_Staff" FromRole="Task" ToRole="Staff" />
+          <NavigationProperty Name="StatusDeadline" Relationship="Self.FK_Task_StatusDeadline" FromRole="Task" ToRole="StatusDeadline" />
+          <NavigationProperty Name="StatusDelete" Relationship="Self.FK_Task_StatusDelete" FromRole="Task" ToRole="StatusDelete" />
+          <NavigationProperty Name="StatusTask" Relationship="Self.FK_Task_StatusTask" FromRole="Task" ToRole="StatusTask" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginUser" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordUser" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="IdStatusTwoFactorAuthentication" Type="Int32" Nullable="false" />
+          <Property Name="IdStatusDelete" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_User" FromRole="User" ToRole="Staff" />
+          <NavigationProperty Name="StatusDelete" Relationship="Self.FK_User_StatusDelete" FromRole="User" ToRole="StatusDelete" />
+          <NavigationProperty Name="StatusTwoFactorAuthentication" Relationship="Self.FK_User_StatusTwoFactorAuthentication" FromRole="User" ToRole="StatusTwoFactorAuthentication" />
+        </EntityType>
+        <Association Name="FK_Task_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckSheet_StatusTask">
+          <End Role="StatusTask" Type="Self.StatusTask" Multiplicity="0..1" />
+          <End Role="CheckSheet" Type="Self.CheckSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusTask">
+              <PropertyRef Name="IdStatusTask" />
+            </Principal>
+            <Dependent Role="CheckSheet">
+              <PropertyRef Name="IdStatusTask" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_CheckSheet">
+          <End Role="CheckSheet" Type="Self.CheckSheet" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CheckSheet">
+              <PropertyRef Name="IdCheckSheet" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdCheckSheet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="IdGender" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passport_IssuedByWhom">
+          <End Role="IssuedByWhom" Type="Self.IssuedByWhom" Multiplicity="1" />
+          <End Role="Passport" Type="Self.Passport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IssuedByWhom">
+              <PropertyRef Name="IdIssuedByWhom" />
+            </Principal>
+            <Dependent Role="Passport">
+              <PropertyRef Name="IdIssuedByWhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_JobTitle">
+          <End Role="JobTitle" Type="Self.JobTitle" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitle">
+              <PropertyRef Name="IdJobTitle" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="IdJobTitle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passport_StatusDelete">
+          <End Role="StatusDelete" Type="Self.StatusDelete" Multiplicity="1" />
+          <End Role="Passport" Type="Self.Passport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusDelete">
+              <PropertyRef Name="IdStatusDelete" />
+            </Principal>
+            <Dependent Role="Passport">
+              <PropertyRef Name="IdStatusDelete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Passport">
+          <End Role="Passport" Type="Self.Passport" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passport">
+              <PropertyRef Name="IdPassport" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="IdPassport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Prirority">
+          <End Role="Prirority" Type="Self.Prirority" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prirority">
+              <PropertyRef Name="IdPrirority" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdPrirority" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Report_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="Report" Type="Self.Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="IdStaff" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="IdStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_StatusDelete">
+          <End Role="StatusDelete" Type="Self.StatusDelete" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusDelete">
+              <PropertyRef Name="IdStatusDelete" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="IdStatusDelete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="IdStaff" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_StatusDeadline">
+          <End Role="StatusDeadline" Type="Self.StatusDeadline" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusDeadline">
+              <PropertyRef Name="IdStatusDeadline" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdStatusDeadline" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_StatusDelete">
+          <End Role="StatusDelete" Type="Self.StatusDelete" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusDelete">
+              <PropertyRef Name="IdStatusDelete" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdStatusDelete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_StatusDelete">
+          <End Role="StatusDelete" Type="Self.StatusDelete" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusDelete">
+              <PropertyRef Name="IdStatusDelete" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdStatusDelete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_StatusTask">
+          <End Role="StatusTask" Type="Self.StatusTask" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusTask">
+              <PropertyRef Name="IdStatusTask" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdStatusTask" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_StatusTwoFactorAuthentication">
+          <End Role="StatusTwoFactorAuthentication" Type="Self.StatusTwoFactorAuthentication" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusTwoFactorAuthentication">
+              <PropertyRef Name="IdStatusTwoFactorAuthentication" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdStatusTwoFactorAuthentication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="CheckSheet" EntityType="Self.CheckSheet" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="IssuedByWhom" EntityType="Self.IssuedByWhom" />
+          <EntitySet Name="JobTitle" EntityType="Self.JobTitle" />
+          <EntitySet Name="Passport" EntityType="Self.Passport" />
+          <EntitySet Name="Prirority" EntityType="Self.Prirority" />
+          <EntitySet Name="Report" EntityType="Self.Report" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" />
+          <EntitySet Name="StatusDeadline" EntityType="Self.StatusDeadline" />
+          <EntitySet Name="StatusDelete" EntityType="Self.StatusDelete" />
+          <EntitySet Name="StatusTask" EntityType="Self.StatusTask" />
+          <EntitySet Name="StatusTwoFactorAuthentication" EntityType="Self.StatusTwoFactorAuthentication" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Task" EntityType="Self.Task" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Task_Category" Association="Self.FK_Task_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckSheet_StatusTask" Association="Self.FK_CheckSheet_StatusTask">
+            <End Role="StatusTask" EntitySet="StatusTask" />
+            <End Role="CheckSheet" EntitySet="CheckSheet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_CheckSheet" Association="Self.FK_Task_CheckSheet">
+            <End Role="CheckSheet" EntitySet="CheckSheet" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Gender" Association="Self.FK_Staff_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passport_IssuedByWhom" Association="Self.FK_Passport_IssuedByWhom">
+            <End Role="IssuedByWhom" EntitySet="IssuedByWhom" />
+            <End Role="Passport" EntitySet="Passport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_JobTitle" Association="Self.FK_Staff_JobTitle">
+            <End Role="JobTitle" EntitySet="JobTitle" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passport_StatusDelete" Association="Self.FK_Passport_StatusDelete">
+            <End Role="StatusDelete" EntitySet="StatusDelete" />
+            <End Role="Passport" EntitySet="Passport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Passport" Association="Self.FK_Staff_Passport">
+            <End Role="Passport" EntitySet="Passport" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Prirority" Association="Self.FK_Task_Prirority">
+            <End Role="Prirority" EntitySet="Prirority" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Report_Staff" Association="Self.FK_Report_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Report" EntitySet="Report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_StatusDelete" Association="Self.FK_Staff_StatusDelete">
+            <End Role="StatusDelete" EntitySet="StatusDelete" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_User" Association="Self.FK_Staff_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Staff" Association="Self.FK_Task_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_StatusDeadline" Association="Self.FK_Task_StatusDeadline">
+            <End Role="StatusDeadline" EntitySet="StatusDeadline" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_StatusDelete" Association="Self.FK_Task_StatusDelete">
+            <End Role="StatusDelete" EntitySet="StatusDelete" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_StatusDelete" Association="Self.FK_User_StatusDelete">
+            <End Role="StatusDelete" EntitySet="StatusDelete" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_StatusTask" Association="Self.FK_Task_StatusTask">
+            <End Role="StatusTask" EntitySet="StatusTask" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_StatusTwoFactorAuthentication" Association="Self.FK_User_StatusTwoFactorAuthentication">
+            <End Role="StatusTwoFactorAuthentication" EntitySet="StatusTwoFactorAuthentication" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DBModelContainer" CdmEntityContainer="DBEntities">
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="DBModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+                <ScalarProperty Name="NameCategory" ColumnName="NameCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CheckSheet">
+            <EntityTypeMapping TypeName="DBModel.CheckSheet">
+              <MappingFragment StoreEntitySet="CheckSheet">
+                <ScalarProperty Name="IdCheckSheet" ColumnName="IdCheckSheet" />
+                <ScalarProperty Name="NameCheckSheet" ColumnName="NameCheckSheet" />
+                <ScalarProperty Name="IdStatusTask" ColumnName="IdStatusTask" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="DBModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+                <ScalarProperty Name="NameGender" ColumnName="NameGender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IssuedByWhom">
+            <EntityTypeMapping TypeName="DBModel.IssuedByWhom">
+              <MappingFragment StoreEntitySet="IssuedByWhom">
+                <ScalarProperty Name="IdIssuedByWhom" ColumnName="IdIssuedByWhom" />
+                <ScalarProperty Name="PlaceIssuePassport" ColumnName="PlaceIssuePassport" />
+                <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobTitle">
+            <EntityTypeMapping TypeName="DBModel.JobTitle">
+              <MappingFragment StoreEntitySet="JobTitle">
+                <ScalarProperty Name="IdJobTitle" ColumnName="IdJobTitle" />
+                <ScalarProperty Name="NameJobTitle" ColumnName="NameJobTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passport">
+            <EntityTypeMapping TypeName="DBModel.Passport">
+              <MappingFragment StoreEntitySet="Passport">
+                <ScalarProperty Name="IdPassport" ColumnName="IdPassport" />
+                <ScalarProperty Name="SeriesPassport" ColumnName="SeriesPassport" />
+                <ScalarProperty Name="NumberPassport" ColumnName="NumberPassport" />
+                <ScalarProperty Name="DepartmentCodePassport" ColumnName="DepartmentCodePassport" />
+                <ScalarProperty Name="RegistrationAddressPassport" ColumnName="RegistrationAddressPassport" />
+                <ScalarProperty Name="IdIssuedByWhom" ColumnName="IdIssuedByWhom" />
+                <ScalarProperty Name="IdStatusDelete" ColumnName="IdStatusDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prirority">
+            <EntityTypeMapping TypeName="DBModel.Prirority">
+              <MappingFragment StoreEntitySet="Prirority">
+                <ScalarProperty Name="IdPrirority" ColumnName="IdPrirority" />
+                <ScalarProperty Name="NamePrirority" ColumnName="NamePrirority" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report">
+            <EntityTypeMapping TypeName="DBModel.Report">
+              <MappingFragment StoreEntitySet="Report">
+                <ScalarProperty Name="IdReport" ColumnName="IdReport" />
+                <ScalarProperty Name="CountOfCompletedLowTasks" ColumnName="CountOfCompletedLowTasks" />
+                <ScalarProperty Name="CountOfCompletedMediumTasks" ColumnName="CountOfCompletedMediumTasks" />
+                <ScalarProperty Name="CountOfCompletedHeightTasks" ColumnName="CountOfCompletedHeightTasks" />
+                <ScalarProperty Name="DatePeriodStart" ColumnName="DatePeriodStart" />
+                <ScalarProperty Name="DatePriodEnd" ColumnName="DatePriodEnd" />
+                <ScalarProperty Name="CountOfCompletedDeadlines" ColumnName="CountOfCompletedDeadlines" />
+                <ScalarProperty Name="CountOfUncomplatedDeadlines" ColumnName="CountOfUncomplatedDeadlines" />
+                <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="DBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
+            <EntityTypeMapping TypeName="DBModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
+                <ScalarProperty Name="LastNameStaff" ColumnName="LastNameStaff" />
+                <ScalarProperty Name="FirstNameStaff" ColumnName="FirstNameStaff" />
+                <ScalarProperty Name="MiddleNameStaff" ColumnName="MiddleNameStaff" />
+                <ScalarProperty Name="NumberPhoneStaff" ColumnName="NumberPhoneStaff" />
+                <ScalarProperty Name="DateOfBirthStaff" ColumnName="DateOfBirthStaff" />
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+                <ScalarProperty Name="AdressStaff" ColumnName="AdressStaff" />
+                <ScalarProperty Name="IdJobTitle" ColumnName="IdJobTitle" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="PhotoStaff" ColumnName="PhotoStaff" />
+                <ScalarProperty Name="IdPassport" ColumnName="IdPassport" />
+                <ScalarProperty Name="IdStatusDelete" ColumnName="IdStatusDelete" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusDeadline">
+            <EntityTypeMapping TypeName="DBModel.StatusDeadline">
+              <MappingFragment StoreEntitySet="StatusDeadline">
+                <ScalarProperty Name="IdStatusDeadline" ColumnName="IdStatusDeadline" />
+                <ScalarProperty Name="NameStatusDeadline" ColumnName="NameStatusDeadline" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusDelete">
+            <EntityTypeMapping TypeName="DBModel.StatusDelete">
+              <MappingFragment StoreEntitySet="StatusDelete">
+                <ScalarProperty Name="IdStatusDelete" ColumnName="IdStatusDelete" />
+                <ScalarProperty Name="NameStatusDelete" ColumnName="NameStatusDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusTask">
+            <EntityTypeMapping TypeName="DBModel.StatusTask">
+              <MappingFragment StoreEntitySet="StatusTask">
+                <ScalarProperty Name="IdStatusTask" ColumnName="IdStatusTask" />
+                <ScalarProperty Name="NameStatusTask" ColumnName="NameStatusTask" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusTwoFactorAuthentication">
+            <EntityTypeMapping TypeName="DBModel.StatusTwoFactorAuthentication">
+              <MappingFragment StoreEntitySet="StatusTwoFactorAuthentication">
+                <ScalarProperty Name="IdStatusTwoFactorAuthentication" ColumnName="IdStatusTwoFactorAuthentication" />
+                <ScalarProperty Name="NameStatusTwoFactorAuthentication" ColumnName="NameStatusTwoFactorAuthentication" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Task">
+            <EntityTypeMapping TypeName="DBModel.Task">
+              <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="IdTask" ColumnName="IdTask" />
+                <ScalarProperty Name="NameTask" ColumnName="NameTask" />
+                <ScalarProperty Name="DescriptionTask" ColumnName="DescriptionTask" />
+                <ScalarProperty Name="IdPrirority" ColumnName="IdPrirority" />
+                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
+                <ScalarProperty Name="DateDue" ColumnName="DateDue" />
+                <ScalarProperty Name="IdStatusTask" ColumnName="IdStatusTask" />
+                <ScalarProperty Name="CommentsTask" ColumnName="CommentsTask" />
+                <ScalarProperty Name="IdStatusDelete" ColumnName="IdStatusDelete" />
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+                <ScalarProperty Name="IdCheckSheet" ColumnName="IdCheckSheet" />
+                <ScalarProperty Name="IdStatusDeadline" ColumnName="IdStatusDeadline" />
+                <ScalarProperty Name="DateDeadline" ColumnName="DateDeadline" />
+                <ScalarProperty Name="DateStartTask" ColumnName="DateStartTask" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="DBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="LoginUser" ColumnName="LoginUser" />
+                <ScalarProperty Name="PasswordUser" ColumnName="PasswordUser" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="IdStatusTwoFactorAuthentication" ColumnName="IdStatusTwoFactorAuthentication" />
+                <ScalarProperty Name="IdStatusDelete" ColumnName="IdStatusDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
