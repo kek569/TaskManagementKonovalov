@@ -214,19 +214,7 @@ namespace TaskManagementKonovalov.WindowFolder
                             }
                         }
 
-                        switch (user.IdRole)
-                        {
-                            /*case 1:
-                                (App.Current as App).DeptName = LoginSave;
-                                new AdminWindowFolder.MainWindowAdmin(false).Show();
-                                this.Close();
-                                break;
-                            case 2:
-                                (App.Current as App).DeptName = LoginSave;
-                                new StaffWindowFolder.MainWindowStaff(false).Show();
-                                this.Close();
-                                break;*/
-                        }
+                        new TwoFactorAuthenticationWindwo(user, this).Show();
                     }
                 }
                 catch (Exception ex)

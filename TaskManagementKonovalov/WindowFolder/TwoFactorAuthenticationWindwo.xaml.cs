@@ -27,7 +27,7 @@ namespace TaskManagementKonovalov.WindowFolder
         Staff staff = new Staff();
         User users = new User();
 
-        public TwoFactorAuthenticationWindwo(User user, string type, Window window)
+        public TwoFactorAuthenticationWindwo(User user, Window window)
         {
             path = Directory.GetCurrentDirectory();
             path = path.Remove(path.Length - 9);
@@ -155,18 +155,10 @@ namespace TaskManagementKonovalov.WindowFolder
                     Random random = new Random();
                     code = random.Next(1000, 9999);
 
-                    if (types == 1)
-                    {
-                        //текст сообщения
-                        string msg = "Была попытка вход в систему, для прохождение дальше нужно ввести данный код подверждения: " + code +
-                            "\nЕсли это не вы пытаетесь войти в систему пожалуйста собшите нам об этом!" + @"<br>";
-                        html_view = AlternateView.CreateAlternateViewFromString(msg, null, "text/html");
-                    }
-                    else
-                    {
-                        string msg = "Подвердите почту, для подтверждение почты введите данный код подверждения: " + code + @"<br>";
-                        html_view = AlternateView.CreateAlternateViewFromString(msg, null, "text/html");
-                    }
+                    //текст сообщения
+                    string msg = "Была попытка вход в систему, для прохождение дальше нужно ввести данный код подверждения: " + code +
+                        "\nЕсли это не вы пытаетесь войти в систему пожалуйста собшите нам об этом!" + @"<br>";
+                    html_view = AlternateView.CreateAlternateViewFromString(msg, null, "text/html");
 
                     mailMessage.IsBodyHtml = true; //используем html код в написании письма
                     mailMessage.From = new MailAddress(smtpUsername); //от какой почты отправлаем

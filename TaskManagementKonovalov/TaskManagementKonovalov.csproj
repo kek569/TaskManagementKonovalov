@@ -266,6 +266,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="SaveFolder\Save.txt" />
+    <Resource Include="SaveFolder\SavePathDictionary.txt" />
+    <Resource Include="SaveFolder\SaveThemeSettings.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DataFolder\DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBModel.edmx</DependentUpon>
@@ -276,9 +281,6 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
-    <Resource Include="SaveFolder\Save.txt" />
-    <Resource Include="SaveFolder\SavePathDictionary.txt" />
-    <Resource Include="SaveFolder\SaveThemeSettings.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
