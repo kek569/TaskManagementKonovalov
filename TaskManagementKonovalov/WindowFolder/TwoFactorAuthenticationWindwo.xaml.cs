@@ -109,7 +109,7 @@ namespace TaskManagementKonovalov.WindowFolder
                 {
                     switch (users.IdRole)
                     {
-                        /*case 1:
+                        case 1:
                             (App.Current as App).DeptName = users.LoginUser;
                             new AdminWindowFolder.MainWindowAdmin(false).Show();
                             this.Close();
@@ -117,10 +117,10 @@ namespace TaskManagementKonovalov.WindowFolder
                             break;
                         case 2:
                             (App.Current as App).DeptName = users.LoginUser;
-                            new ClientWindowFolder.MainWindowClient(false).Show();
+                            new StaffWindowFolder.MainWindowStaff(false).Show();
                             this.Close();
                             windows.Close();
-                            break;*/
+                            break;
                     }
                 }
                 else

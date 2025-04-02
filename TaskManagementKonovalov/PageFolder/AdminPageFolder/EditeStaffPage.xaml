@@ -1,0 +1,158 @@
+﻿<Page x:Class="TaskManagementKonovalov.PageFolder.AdminPageFolder.EditeStaffPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TaskManagementKonovalov.PageFolder.AdminPageFolder"
+      mc:Ignorable="d" 
+            d:DesignHeight="645" d:DesignWidth="900"
+      Title="Редактирование сотрудника">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="290"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="290"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label x:Name="FirstNameLb"
+            Content="Фамилия"
+Grid.Row="1" Grid.Column="1"
+Style="{DynamicResource LabelNormal}"/>
+        <TextBox x:Name="FirstNameStaffTb"
+  Grid.Row="1"
+  Grid.Column="2"/>
+
+        <Label x:Name="SurNameLb"
+            Content="Имя"
+Grid.Row="3" Grid.Column="1"
+Style="{DynamicResource LabelNormal}"/>
+        <TextBox x:Name="LastNameStaffTb"
+  Grid.Row="3"
+  Grid.Column="2"/>
+
+        <Label x:Name="MiddleNameLb"
+            Content="Отчество"
+Grid.Row="5" Grid.Column="1"
+Style="{DynamicResource LabelNormal}"/>
+        <TextBox x:Name="MiddleNameStaffTb"
+  Grid.Row="5"
+  Grid.Column="2"/>
+
+        <Label x:Name="GenderLb"
+            Content="Пол"
+    Grid.Row="7" Grid.Column="1"
+    Style="{DynamicResource LabelNormal}"/>
+        <ComboBox x:Name="GenderCb"
+   Grid.Column="2"
+   Grid.Row="7"
+SelectedItem="{Binding Gender}"
+          SelectedValuePath="IdGender"
+          DisplayMemberPath="NameGender"
+                  PreviewKeyDown="GenderCb_PreviewKeyDown"/>
+
+        <Label x:Name="DateOfBirthLb"
+            Content="День рождения"
+    Grid.Row="1" Grid.Column="4"
+    Style="{DynamicResource LabelNormal}"/>
+        <DatePicker x:Name="DateOfBirthStaffDp"
+    Grid.Row="1"
+    Grid.Column="5"
+                    PreviewKeyDown="DateOfBirthStaffDp_PreviewKeyDown"/>
+        <Label x:Name="AdressLb"
+            Content="Адрес"
+    Grid.Row="3" Grid.Column="4"
+    Style="{DynamicResource LabelNormal}"/>
+        <TextBox x:Name="AdressStaffTb"
+    Grid.Row="3"
+    Grid.Column="5"/>
+
+        <Label x:Name="NumberPhoneLb"
+            Content="Номер телефона"
+    Grid.Row="5" Grid.Column="4"
+    Style="{DynamicResource LabelNormal}"/>
+        <TextBox x:Name="NumberPhoneStaffTb"
+    Grid.Row="5"
+    Grid.Column="5"
+                 SpellCheck.IsEnabled="False"
+                 PreviewTextInput="NumberPhoneStaffTb_PreviewTextInput"/>
+
+        <Label x:Name="JobTitleLb"
+            Content="Должность"
+Grid.Row="7" Grid.Column="4"
+Style="{DynamicResource LabelNormal}"/>
+        <ComboBox x:Name="JobTitleCb"
+Grid.Row="7"
+Grid.Column="5"
+                  SelectedItem="{Binding JobTitle}"
+          SelectedValuePath="IdJobTitle"
+          DisplayMemberPath="NameJobTitle"
+                  PreviewKeyDown="JobTitleCb_PreviewKeyDown"/>
+
+        <Label x:Name="RoleLb"
+            Content="Роль"
+Grid.Row="9" Grid.Column="1"
+Style="{DynamicResource LabelNormal}"/>
+        <ComboBox x:Name="RoleCb"
+Grid.Row="9"
+Grid.Column="2"
+                  SelectedItem="{Binding Role}"
+          SelectedValuePath="IdRole"
+          DisplayMemberPath="NameRole"
+                  PreviewKeyDown="RoleCb_PreviewKeyDown"/>
+
+        <Image x:Name="PhotoIM"
+       Grid.Row="9"
+       Grid.Column="4"
+               Grid.RowSpan="2"
+       Grid.ColumnSpan="2"
+               MouseLeftButtonDown="PhotoIM_MouseLeftButtonDown"/>
+
+        <Button x:Name="LoadPhotoBtn"
+    Grid.Column="2"
+    Grid.Row="12"
+    Click="LoadPhotoBtn_Click">
+            <StackPanel Orientation="Horizontal"
+  HorizontalAlignment="Center"
+  VerticalAlignment="Center">
+                <Image Style="{StaticResource LoadPhotoIm}" 
+   Margin="7"/>
+                <TextBlock x:Name="LoadPhotoTb" Text=" Загрузить фото" VerticalAlignment="Center" 
+Style="{StaticResource TextBlockInBtn}"/>
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="SaveBtn"
+Grid.Column="5"
+Grid.Row="12"
+Click="SaveBtn_Click">
+            <StackPanel Orientation="Horizontal"
+  HorizontalAlignment="Center"
+  VerticalAlignment="Center">
+                <Image Style="{StaticResource SaveIm}" 
+   Margin="7"/>
+                <TextBlock Text=" Сохранить изменения" VerticalAlignment="Center" 
+Style="{StaticResource TextBlockInBtn}"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Page>

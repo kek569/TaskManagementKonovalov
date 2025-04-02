@@ -1,0 +1,353 @@
+﻿<Window x:Class="TaskManagementKonovalov.WindowFolder.AdminWindowFolder.MainWindowAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskManagementKonovalov.WindowFolder.AdminWindowFolder"
+                mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    Background="{x:Null}"
+    AllowsTransparency="True"
+    ResizeMode="CanResizeWithGrip"
+    MaxHeight="750" MaxWidth="1200"
+    MinHeight="750" MinWidth="1200"
+    Title="{Binding ElementName=MainFrame,
+            Path=Content.Title}"
+    Icon="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/Logo.png">
+    <Border Style="{DynamicResource FonBorder}"
+    MouseDown="Border_MouseDown">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Border Style="{DynamicResource BorderTop}"
+            Grid.RowSpan="2"/>
+            <Label Grid.Row="1"
+           Style="{StaticResource LabelLogo}"
+                   Foreground="{StaticResource FillFontOne}"
+           Content="{Binding ElementName=MainFrame,
+            Path=Content.Title}"/>
+            <Image x:Name="CloseIm"
+           Grid.Row="1"
+           Style="{DynamicResource CloseIm}"
+           MouseLeftButtonDown="CloseIm_MouseLeftButtonDown"/>
+            <Image x:Name="LogoIm"
+            Style="{DynamicResource LogoIm}"
+               Height="63"
+               Width="63" Grid.RowSpan="2"/>
+
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="210"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="1"
+                  Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Ellipse x:Name="AvatarEl"
+                     Width="75"
+                     Height="75"
+                             Margin="10, 0, 0, 0"
+                     MouseLeftButtonDown="AvatarEl_MouseLeftButtonDown">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="AvatarIm"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+                    <Image x:Name="PersonalIm"
+                       Style="{StaticResource PersonalIm}"
+                       Height="50"
+                       Width="50"
+                           Margin="10, 0, 0, 0"
+                       MouseLeftButtonDown="PersonalIm_MouseLeftButtonDown"/>
+
+                    <Label x:Name="FullNameLb"
+                       Content="Иванов&#10;Иван&#10;Иванович"
+                       HorizontalContentAlignment="Left"
+                       FontSize="18"
+                       Style="{StaticResource LabelNormal}"
+                       Grid.Column="2"
+                       Margin="0"/>
+
+                    <Label Content="Администратор"
+                           FontSize="20"
+                       Style="{StaticResource LabelNormal}"
+                       VerticalContentAlignment="Top"
+                       HorizontalContentAlignment="Left"
+                       Grid.Row="2"
+                       Grid.ColumnSpan="3"
+                       Margin="0"/>
+                </Grid>
+
+                <StackPanel Grid.Row="3"
+                        Grid.Column="1"
+                        Orientation="Vertical">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="ListStaffBtn"
+             Click="ListStaffBtn_Click">
+                            <StackPanel Orientation="Horizontal"
+ HorizontalAlignment="Left"
+ VerticalAlignment="Center">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Style="{StaticResource StaffIm}"
+                            Grid.Column="1"
+Margin="10"/>
+                                    <TextBlock Text="Сотрудники"
+                                Grid.Column="2"
+                                FontSize="18"
+    Style="{StaticResource TextBlockInBtn}"/>
+                                </Grid>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+
+                <Button x:Name="BackBtn"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    VerticalAlignment="Bottom"
+                    Width="125"
+                    Height="30"
+                        Click="BackBtn_Click">
+                    <StackPanel Orientation="Horizontal"
+ HorizontalAlignment="Left"
+ VerticalAlignment="Center">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="35"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Style="{StaticResource BackIm}"
+                            Grid.Column="1"
+Margin="5"/>
+                            <TextBlock Text="Назад"
+                                Grid.Column="2"
+                                FontSize="18"
+    Style="{StaticResource TextBlockInBtn}"/>
+                        </Grid>
+                    </StackPanel>
+                </Button>
+
+                <Frame x:Name="MainFrame"
+                   Grid.Row="1"
+                   Grid.Column="3"
+                   Grid.RowSpan="3"
+                   Margin="10"
+                   NavigationUIVisibility="Hidden"/>
+
+                <Image x:Name="CloseMenuIm"
+                   Source="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/Air.png"
+                   Grid.ColumnSpan="5"
+                   Grid.RowSpan="5"
+                   MouseLeftButtonDown="CloseMenuIm_MouseLeftButtonDown"/>
+
+                <Grid x:Name="MenuGr"
+                  Grid.ColumnSpan="4"
+                  Grid.RowSpan="4"
+                  Background="{StaticResource FillLup}"
+                      HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                      Width="300"
+                  Height="370">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="9"/>
+                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="9"/>
+                        <RowDefinition Height="1"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="75"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="9"/>
+                        <ColumnDefinition Width="1"/>
+                    </Grid.ColumnDefinitions>
+                    <Ellipse Grid.Row="2"
+                         Grid.Column="2"
+                         Width="75"
+                         Height="75">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="CopyAvatarIm"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+                    <Image x:Name="CopyPersonalIm"
+                       Style="{StaticResource PersonalIm}"
+                       Grid.Row="2"
+                       Grid.Column="2"
+                       Height="50"
+                       Width="50"/>
+
+                    <Label x:Name="CopyFullNameLb"
+                       Content="Иванов&#10;Иван&#10;Иванович"
+                       HorizontalContentAlignment="Left"
+                       FontSize="18"
+                       Style="{StaticResource LabelNormal}"
+                       Grid.Row="2"
+                       Grid.Column="4"
+                           Foreground="{StaticResource FillFontOne}"
+                       Margin="0"/>
+
+                    <Label Content="Администратор"
+                       Style="{StaticResource LabelNormal}"
+                       VerticalContentAlignment="Top"
+                       HorizontalContentAlignment="Left"
+                           FontSize="20"
+                       Grid.Row="4"
+                       Grid.Column="2"
+                       Grid.ColumnSpan="3"
+                           Foreground="{StaticResource FillFontOne}"
+                       Margin="0"/>
+
+                    <StackPanel Grid.Row="6"
+                            Grid.Column="2"
+                            Grid.ColumnSpan="3">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="70"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="InformationPersonalBtn"
+                                    Style="{StaticResource ButtonInMenu}"
+                                    Click="InformationPersonalBtn_Click">
+                                <StackPanel Orientation="Horizontal"
+ HorizontalAlignment="Left"
+ VerticalAlignment="Center">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="65"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Style="{StaticResource PersonalIm}"
+                            Grid.Column="1"
+Margin="10"/>
+                                        <TextBlock Text="Информация о&#10;пользователе"
+                                Grid.Column="2"
+                                FontSize="18"
+    Style="{StaticResource TextBlockInBtn}"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="SettingsBtn"
+                                    Style="{StaticResource ButtonInMenu}"
+                                Grid.Row="2"
+                                Click="SettingsBtn_Click">
+                                <StackPanel Orientation="Horizontal"
+ HorizontalAlignment="Left"
+ VerticalAlignment="Center">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="105"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Style="{StaticResource SettingsIm}"
+                            Grid.Column="1"
+Margin="10"/>
+                                        <TextBlock Text="Настройки"
+                                Grid.Column="2"
+                                FontSize="18"
+    Style="{StaticResource TextBlockInBtn}"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="ChangeUserBtn"
+                                    Style="{StaticResource ButtonInMenu}"
+                                Grid.Row="4"
+                                    Click="ChangeUserBtn_Click">
+                                <StackPanel Orientation="Horizontal"
+ HorizontalAlignment="Left"
+ VerticalAlignment="Center">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="80"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Style="{StaticResource ChangePersonalIm}"
+                            Grid.Column="1"
+Margin="7"/>
+                                        <TextBlock Text="Сменить&#10;пользователя"
+                                Grid.Column="2"
+                                FontSize="18"
+    Style="{StaticResource TextBlockInBtn}"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="6"
+                                Grid.RowSpan="9"
+                                Background="{StaticResource FillAccentuationOne}"/>
+                    <StackPanel Grid.Row="8"
+                                Grid.ColumnSpan="7"
+                                Background="{StaticResource FillAccentuationOne}"/>
+
+                    <StackPanel Grid.RowSpan="9"
+                                Background="{StaticResource FillAccentuationOne}"/>
+                    <StackPanel Grid.ColumnSpan="7"
+                                Background="{StaticResource FillAccentuationOne}"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
