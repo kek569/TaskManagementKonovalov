@@ -54,7 +54,6 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
             MiddleNameStaffTb.Text = staffs.MiddleNameStaff;
             NumberPhoneStaffTb.Text = staffs.NumberPhoneStaff;
             DateOfBirthStaffDp.Text = staffs.DateOfBirthStaff.ToString();
-            AdressStaffTb.Text = staffs.AdressStaff;
             PhotoIM.Source = ClassImage.ConvertByteArrayToImage(staffs.PhotoStaff);
 
             var timer = new DispatcherTimer
@@ -172,7 +171,6 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
 
                 staffs.NumberPhoneStaff = NumberPhoneStaffTb.Text;
                 staffs.DateOfBirthStaff = DateTime.Parse(DateOfBirthStaffDp.Text);
-                staffs.AdressStaff = AdressStaffTb.Text;
                 staffs.IdGender = Int32.Parse(GenderCb.SelectedValue.ToString());
                 staffs.IdJobTitle = Int32.Parse(JobTitleCb.SelectedValue.ToString());
                 staffs.User.IdRole = Int32.Parse(RoleCb.SelectedValue.ToString());

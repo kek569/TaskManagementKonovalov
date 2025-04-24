@@ -28,6 +28,7 @@ namespace TaskManagementKonovalov.DataFolder
         public int IdStatusDeadline { get; set; }
         public Nullable<System.DateTime> DateDeadline { get; set; }
         public System.DateTime DateStartTask { get; set; }
+        public byte[] Documents { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual CheckSheet CheckSheet { get; set; }

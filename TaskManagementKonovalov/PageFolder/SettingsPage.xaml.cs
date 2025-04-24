@@ -52,7 +52,7 @@ namespace TaskManagementKonovalov.PageFolder
             string deptName = (App.Current as App).DeptName;
 
             staff = DBEntities.GetContext().Staff.FirstOrDefault
-            (s => s.User.LoginUser == deptName);
+                        (s => s.User.LoginUser == deptName);
 
             RenameLoginTb.Text = staff.User.LoginUser;
             login = staff.User.LoginUser;
@@ -182,6 +182,47 @@ namespace TaskManagementKonovalov.PageFolder
                 }
 
                 Restart();
+            }
+        }
+
+        private void TwoFactorAuthenticationCb_MouseEnter(object sender, MouseEventArgs e)
+        {
+            TwoFactorAuthenticationCb.Items.Remove("Двухфакторная аутентификация");
+
+            User user = DBEntities.GetContext().User.FirstOrDefault
+                        (s => s.LoginUser == staff.User.LoginUser);
+
+            if (user.IdStatusTwoFactorAuthentication == 1)
+            {
+                TwoFactorAuthenticationCb.SelectedIndex = 0;
+            }
+            else
+            {
+                TwoFactorAuthenticationCb.SelectedIndex = 1;
+            }
+        }
+
+        private void TwoFactorAuthenticationCb_MouseLeave(object sender, MouseEventArgs e)
+        {
+            TwoFactorAuthenticationCb.Items.Add("Двухфакторная аутентификация");
+
+            TwoFactorAuthenticationCb.SelectedIndex = 2;
+        }
+
+        private void TwoFactorAuthenticationCb_DropDownClosed(object sender, EventArgs e)
+        {
+            User user = DBEntities.GetContext().User.FirstOrDefault
+                        (s => s.LoginUser == staff.User.LoginUser);
+
+            if (TwoFactorAuthenticationCb.SelectedIndex == 0)
+            {
+                    user.IdStatusTwoFactorAuthentication = 1;
+                    DBEntities.GetContext().SaveChanges();
+            }
+            else if (TwoFactorAuthenticationCb.SelectedIndex == 1)
+            {
+                    user.IdStatusTwoFactorAuthentication = 2;
+                    DBEntities.GetContext().SaveChanges();
             }
         }
 

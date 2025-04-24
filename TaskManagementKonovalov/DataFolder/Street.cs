@@ -12,29 +12,18 @@ namespace TaskManagementKonovalov.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Passport
+    public partial class Street
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Passport()
+        public Street()
         {
-            this.Staff = new HashSet<Staff>();
+            this.Address = new HashSet<Address>();
         }
     
-        public int IdPassport { get; set; }
-        public int SeriesPassport { get; set; }
-        public int NumberPassport { get; set; }
-        public int IdAddress { get; set; }
-        public int IdIssuedByWhom { get; set; }
-        public int IdStatusDelete { get; set; }
+        public int IdStreet { get; set; }
+        public string NameStreet { get; set; }
     
-        public virtual Address Address { get; set; }
-        public virtual IssuedByWhom IssuedByWhom { get; set; }
-        public virtual StatusDelete StatusDelete { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Staff> Staff { get; set; }
-        public string PlaceIssuePassport { get; internal set; }
-        public object DateUssuePassport { get; internal set; }
-        public string DepartmentCodePassport { get; internal set; }
-        public string RegistrationAddressPassport { get; internal set; }
+        public virtual ICollection<Address> Address { get; set; }
     }
 }

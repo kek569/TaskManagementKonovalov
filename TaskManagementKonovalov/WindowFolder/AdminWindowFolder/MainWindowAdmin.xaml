@@ -10,8 +10,8 @@
     Background="{x:Null}"
     AllowsTransparency="True"
     ResizeMode="CanResizeWithGrip"
-    MaxHeight="750" MaxWidth="1200"
-    MinHeight="750" MinWidth="1200"
+    MaxHeight="900" MaxWidth="1440"
+    MinHeight="900" MinWidth="1440"
     Title="{Binding ElementName=MainFrame,
             Path=Content.Title}"
     Icon="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/Logo.png">

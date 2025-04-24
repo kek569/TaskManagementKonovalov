@@ -28,7 +28,7 @@ namespace TaskManagementKonovalov.DataFolder
         public string NumberPhoneStaff { get; set; }
         public System.DateTime DateOfBirthStaff { get; set; }
         public int IdGender { get; set; }
-        public string AdressStaff { get; set; }
+        public int IdAddress { get; set; }
         public int IdJobTitle { get; set; }
         public int IdUser { get; set; }
         public byte[] PhotoStaff { get; set; }
@@ -36,6 +36,7 @@ namespace TaskManagementKonovalov.DataFolder
         public int IdStatusDelete { get; set; }
         public string Email { get; set; }
     
+        public virtual Address Address { get; set; }
         public virtual Gender Gender { get; set; }
         public virtual JobTitle JobTitle { get; set; }
         public virtual Passport Passport { get; set; }

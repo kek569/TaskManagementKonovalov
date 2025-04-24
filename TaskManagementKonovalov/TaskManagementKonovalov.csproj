@@ -70,10 +70,16 @@
     </ApplicationDefinition>
     <Compile Include="ClassFolder\ClassImage.cs" />
     <Compile Include="ClassFolder\MBClass.cs" />
+    <Compile Include="DataFolder\Address.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataFolder\Category.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataFolder\CheckSheet.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataFolder\City.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataFolder\ContextClass.cs" />
@@ -107,6 +113,9 @@
     <Compile Include="DataFolder\Prirority.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataFolder\Region.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataFolder\Report.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -128,6 +137,9 @@
     <Compile Include="DataFolder\StatusTwoFactorAuthentication.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataFolder\Street.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataFolder\sysdiagrams.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -137,8 +149,14 @@
     <Compile Include="DataFolder\User.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PageFolder\AdminPageFolder\AddPassportPage.xaml.cs">
+      <DependentUpon>AddPassportPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageFolder\AdminPageFolder\AddStaffPage.xaml.cs">
       <DependentUpon>AddStaffPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageFolder\AdminPageFolder\EditePassportPage.xaml.cs">
+      <DependentUpon>EditePassportPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageFolder\AdminPageFolder\EditeStaffPage.xaml.cs">
       <DependentUpon>EditeStaffPage.xaml</DependentUpon>
@@ -194,7 +212,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PageFolder\AdminPageFolder\AddPassportPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PageFolder\AdminPageFolder\AddStaffPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageFolder\AdminPageFolder\EditePassportPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -13,7 +13,8 @@
         ResizeMode="CanMinimize"
         Background="{x:Null}"
         Icon="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/Logo.png">
-    <Border Style="{DynamicResource FonBorder}">
+    <Border Style="{DynamicResource FonBorder}"
+            MouseDown="Border_MouseDown">
         <Grid>
 
             <Grid.ColumnDefinitions>

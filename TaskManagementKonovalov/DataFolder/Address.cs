@@ -12,29 +12,29 @@ namespace TaskManagementKonovalov.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Passport
+    public partial class Address
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Passport()
+        public Address()
         {
+            this.Passport = new HashSet<Passport>();
             this.Staff = new HashSet<Staff>();
         }
     
-        public int IdPassport { get; set; }
-        public int SeriesPassport { get; set; }
-        public int NumberPassport { get; set; }
         public int IdAddress { get; set; }
-        public int IdIssuedByWhom { get; set; }
-        public int IdStatusDelete { get; set; }
+        public int IdCity { get; set; }
+        public int IdStreet { get; set; }
+        public int House { get; set; }
+        public Nullable<int> Entrance { get; set; }
+        public int Apartment { get; set; }
+        public int IdRegion { get; set; }
     
-        public virtual Address Address { get; set; }
-        public virtual IssuedByWhom IssuedByWhom { get; set; }
-        public virtual StatusDelete StatusDelete { get; set; }
+        public virtual City City { get; set; }
+        public virtual Region Region { get; set; }
+        public virtual Street Street { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Passport> Passport { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Staff> Staff { get; set; }
-        public string PlaceIssuePassport { get; internal set; }
-        public object DateUssuePassport { get; internal set; }
-        public string DepartmentCodePassport { get; internal set; }
-        public string RegistrationAddressPassport { get; internal set; }
     }
 }

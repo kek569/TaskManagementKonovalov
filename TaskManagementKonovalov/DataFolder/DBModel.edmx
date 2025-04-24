@@ -5,6 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище DBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="IdAddress" />
+          </Key>
+          <Property Name="IdAddress" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCity" Type="int" Nullable="false" />
+          <Property Name="IdStreet" Type="int" Nullable="false" />
+          <Property Name="House" Type="int" Nullable="false" />
+          <Property Name="Entrance" Type="int" />
+          <Property Name="Apartment" Type="int" Nullable="false" />
+          <Property Name="IdRegion" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="IdCategory" />
@@ -19,6 +31,13 @@
           <Property Name="IdCheckSheet" Type="int" Nullable="false" />
           <Property Name="NameCheckSheet" Type="nvarchar" MaxLength="80" Nullable="false" />
           <Property Name="IdStatusTask" Type="int" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="IdCity" />
+          </Key>
+          <Property Name="IdCity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCity" Type="nvarchar" MaxLength="80" Nullable="false" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -49,8 +68,7 @@
           <Property Name="IdPassport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SeriesPassport" Type="int" Nullable="false" />
           <Property Name="NumberPassport" Type="int" Nullable="false" />
-          <Property Name="DepartmentCodePassport" Type="nvarchar" MaxLength="7" Nullable="false" />
-          <Property Name="RegistrationAddressPassport" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdAddress" Type="int" Nullable="false" />
           <Property Name="IdIssuedByWhom" Type="int" Nullable="false" />
           <Property Name="IdStatusDelete" Type="int" Nullable="false" />
         </EntityType>
@@ -60,6 +78,13 @@
           </Key>
           <Property Name="IdPrirority" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NamePrirority" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="IdRegion" />
+          </Key>
+          <Property Name="IdRegion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRegion" Type="nvarchar" MaxLength="80" Nullable="false" />
         </EntityType>
         <EntityType Name="Report">
           <Key>
@@ -94,7 +119,7 @@
           <Property Name="NumberPhoneStaff" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="DateOfBirthStaff" Type="date" Nullable="false" />
           <Property Name="IdGender" Type="int" Nullable="false" />
-          <Property Name="AdressStaff" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IdAddress" Type="int" Nullable="false" />
           <Property Name="IdJobTitle" Type="int" Nullable="false" />
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="PhotoStaff" Type="varbinary(max)" />
@@ -130,6 +155,13 @@
           <Property Name="IdStatusTwoFactorAuthentication" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameStatusTwoFactorAuthentication" Type="nvarchar" MaxLength="80" Nullable="false" />
         </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="IdStreet" />
+          </Key>
+          <Property Name="IdStreet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameStreet" Type="nvarchar" MaxLength="80" Nullable="false" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -158,6 +190,7 @@
           <Property Name="IdStatusDeadline" Type="int" Nullable="false" />
           <Property Name="DateDeadline" Type="date" />
           <Property Name="DateStartTask" Type="date" Nullable="false" />
+          <Property Name="Documents" Type="varbinary(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -170,6 +203,42 @@
           <Property Name="IdStatusTwoFactorAuthentication" Type="int" Nullable="false" />
           <Property Name="IdStatusDelete" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Address_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="IdCity" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="IdRegion" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="IdRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Street">
+          <End Role="Street" Type="Self.Street" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="IdStreet" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="IdStreet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CheckSheet_StatusTask">
           <End Role="StatusTask" Type="Self.StatusTask" Multiplicity="0..1" />
           <End Role="CheckSheet" Type="Self.CheckSheet" Multiplicity="*" />
@@ -179,6 +248,18 @@
             </Principal>
             <Dependent Role="CheckSheet">
               <PropertyRef Name="IdStatusTask" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passport_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Passport" Type="Self.Passport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="IdAddress" />
+            </Principal>
+            <Dependent Role="Passport">
+              <PropertyRef Name="IdAddress" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -215,6 +296,18 @@
             </Principal>
             <Dependent Role="Report">
               <PropertyRef Name="IdStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="IdAddress" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="IdAddress" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -399,13 +492,16 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище DBModelContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CheckSheet" EntityType="Self.CheckSheet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IssuedByWhom" EntityType="Self.IssuedByWhom" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobTitle" EntityType="Self.JobTitle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Passport" EntityType="Self.Passport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prirority" EntityType="Self.Prirority" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
@@ -413,12 +509,29 @@
           <EntitySet Name="StatusDelete" EntityType="Self.StatusDelete" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StatusTask" EntityType="Self.StatusTask" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StatusTwoFactorAuthentication" EntityType="Self.StatusTwoFactorAuthentication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Street" EntityType="Self.Street" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Address_City" Association="Self.FK_Address_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Region" Association="Self.FK_Address_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Street" Association="Self.FK_Address_Street">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
           <AssociationSet Name="FK_CheckSheet_StatusTask" Association="Self.FK_CheckSheet_StatusTask">
             <End Role="StatusTask" EntitySet="StatusTask" />
             <End Role="CheckSheet" EntitySet="CheckSheet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passport_Address" Association="Self.FK_Passport_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Passport" EntitySet="Passport" />
           </AssociationSet>
           <AssociationSet Name="FK_Passport_IssuedByWhom" Association="Self.FK_Passport_IssuedByWhom">
             <End Role="IssuedByWhom" EntitySet="IssuedByWhom" />
@@ -431,6 +544,10 @@
           <AssociationSet Name="FK_Report_Staff" Association="Self.FK_Report_Staff">
             <End Role="Staff" EntitySet="Staff" />
             <End Role="Report" EntitySet="Report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Address" Association="Self.FK_Staff_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Staff" EntitySet="Staff" />
           </AssociationSet>
           <AssociationSet Name="FK_Staff_Gender" Association="Self.FK_Staff_Gender">
             <End Role="Gender" EntitySet="Gender" />
@@ -498,6 +615,23 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="IdAddress" />
+          </Key>
+          <Property Name="IdAddress" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCity" Type="Int32" Nullable="false" />
+          <Property Name="IdStreet" Type="Int32" Nullable="false" />
+          <Property Name="House" Type="Int32" Nullable="false" />
+          <Property Name="Entrance" Type="Int32" />
+          <Property Name="Apartment" Type="Int32" Nullable="false" />
+          <Property Name="IdRegion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="Self.FK_Address_City" FromRole="Address" ToRole="City" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_Address_Region" FromRole="Address" ToRole="Region" />
+          <NavigationProperty Name="Street" Relationship="Self.FK_Address_Street" FromRole="Address" ToRole="Street" />
+          <NavigationProperty Name="Passport" Relationship="Self.FK_Passport_Address" FromRole="Address" ToRole="Passport" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_Address" FromRole="Address" ToRole="Staff" />
+        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="IdCategory" />
@@ -515,6 +649,14 @@
           <Property Name="IdStatusTask" Type="Int32" />
           <NavigationProperty Name="StatusTask" Relationship="Self.FK_CheckSheet_StatusTask" FromRole="CheckSheet" ToRole="StatusTask" />
           <NavigationProperty Name="Task" Relationship="Self.FK_Task_CheckSheet" FromRole="CheckSheet" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="IdCity" />
+          </Key>
+          <Property Name="IdCity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCity" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_Address_City" FromRole="City" ToRole="Address" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -548,10 +690,10 @@
           <Property Name="IdPassport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SeriesPassport" Type="Int32" Nullable="false" />
           <Property Name="NumberPassport" Type="Int32" Nullable="false" />
-          <Property Name="DepartmentCodePassport" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RegistrationAddressPassport" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdAddress" Type="Int32" Nullable="false" />
           <Property Name="IdIssuedByWhom" Type="Int32" Nullable="false" />
           <Property Name="IdStatusDelete" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_Passport_Address" FromRole="Passport" ToRole="Address" />
           <NavigationProperty Name="IssuedByWhom" Relationship="Self.FK_Passport_IssuedByWhom" FromRole="Passport" ToRole="IssuedByWhom" />
           <NavigationProperty Name="StatusDelete" Relationship="Self.FK_Passport_StatusDelete" FromRole="Passport" ToRole="StatusDelete" />
           <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_Passport" FromRole="Passport" ToRole="Staff" />
@@ -563,6 +705,14 @@
           <Property Name="IdPrirority" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NamePrirority" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Task" Relationship="Self.FK_Task_Prirority" FromRole="Prirority" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="IdRegion" />
+          </Key>
+          <Property Name="IdRegion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRegion" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_Address_Region" FromRole="Region" ToRole="Address" />
         </EntityType>
         <EntityType Name="Report">
           <Key>
@@ -599,13 +749,14 @@
           <Property Name="NumberPhoneStaff" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateOfBirthStaff" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="IdGender" Type="Int32" Nullable="false" />
-          <Property Name="AdressStaff" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdAddress" Type="Int32" Nullable="false" />
           <Property Name="IdJobTitle" Type="Int32" Nullable="false" />
           <Property Name="IdUser" Type="Int32" Nullable="false" />
           <Property Name="PhotoStaff" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IdPassport" Type="Int32" Nullable="false" />
           <Property Name="IdStatusDelete" Type="Int32" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_Staff_Address" FromRole="Staff" ToRole="Address" />
           <NavigationProperty Name="Gender" Relationship="Self.FK_Staff_Gender" FromRole="Staff" ToRole="Gender" />
           <NavigationProperty Name="JobTitle" Relationship="Self.FK_Staff_JobTitle" FromRole="Staff" ToRole="JobTitle" />
           <NavigationProperty Name="Passport" Relationship="Self.FK_Staff_Passport" FromRole="Staff" ToRole="Passport" />
@@ -650,6 +801,14 @@
           <Property Name="NameStatusTwoFactorAuthentication" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_User_StatusTwoFactorAuthentication" FromRole="StatusTwoFactorAuthentication" ToRole="User" />
         </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="IdStreet" />
+          </Key>
+          <Property Name="IdStreet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameStreet" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FK_Address_Street" FromRole="Street" ToRole="Address" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -678,6 +837,7 @@
           <Property Name="IdStatusDeadline" Type="Int32" Nullable="false" />
           <Property Name="DateDeadline" Type="DateTime" Precision="0" />
           <Property Name="DateStartTask" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Documents" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Task_Category" FromRole="Task" ToRole="Category" />
           <NavigationProperty Name="CheckSheet" Relationship="Self.FK_Task_CheckSheet" FromRole="Task" ToRole="CheckSheet" />
           <NavigationProperty Name="Prirority" Relationship="Self.FK_Task_Prirority" FromRole="Task" ToRole="Prirority" />
@@ -701,6 +861,66 @@
           <NavigationProperty Name="StatusDelete" Relationship="Self.FK_User_StatusDelete" FromRole="User" ToRole="StatusDelete" />
           <NavigationProperty Name="StatusTwoFactorAuthentication" Relationship="Self.FK_User_StatusTwoFactorAuthentication" FromRole="User" ToRole="StatusTwoFactorAuthentication" />
         </EntityType>
+        <Association Name="FK_Address_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="IdCity" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="IdRegion" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="IdRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Street">
+          <End Role="Street" Type="Self.Street" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="IdStreet" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="IdStreet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Passport_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Passport" Type="Self.Passport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="IdAddress" />
+            </Principal>
+            <Dependent Role="Passport">
+              <PropertyRef Name="IdAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="IdAddress" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="IdAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Task_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
@@ -930,13 +1150,16 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Address" EntityType="Self.Address" />
           <EntitySet Name="Category" EntityType="Self.Category" />
           <EntitySet Name="CheckSheet" EntityType="Self.CheckSheet" />
+          <EntitySet Name="City" EntityType="Self.City" />
           <EntitySet Name="Gender" EntityType="Self.Gender" />
           <EntitySet Name="IssuedByWhom" EntityType="Self.IssuedByWhom" />
           <EntitySet Name="JobTitle" EntityType="Self.JobTitle" />
           <EntitySet Name="Passport" EntityType="Self.Passport" />
           <EntitySet Name="Prirority" EntityType="Self.Prirority" />
+          <EntitySet Name="Region" EntityType="Self.Region" />
           <EntitySet Name="Report" EntityType="Self.Report" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="Staff" EntityType="Self.Staff" />
@@ -944,9 +1167,30 @@
           <EntitySet Name="StatusDelete" EntityType="Self.StatusDelete" />
           <EntitySet Name="StatusTask" EntityType="Self.StatusTask" />
           <EntitySet Name="StatusTwoFactorAuthentication" EntityType="Self.StatusTwoFactorAuthentication" />
+          <EntitySet Name="Street" EntityType="Self.Street" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Task" EntityType="Self.Task" />
           <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Address_City" Association="Self.FK_Address_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Region" Association="Self.FK_Address_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Street" Association="Self.FK_Address_Street">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Passport_Address" Association="Self.FK_Passport_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Passport" EntitySet="Passport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Address" Association="Self.FK_Staff_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
           <AssociationSet Name="FK_Task_Category" Association="Self.FK_Task_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="Task" EntitySet="Task" />
@@ -1030,6 +1274,19 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище DBModelContainer" CdmEntityContainer="DBEntities">
+          <EntitySetMapping Name="Address">
+            <EntityTypeMapping TypeName="DBModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="IdAddress" ColumnName="IdAddress" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="IdStreet" ColumnName="IdStreet" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="Entrance" ColumnName="Entrance" />
+                <ScalarProperty Name="Apartment" ColumnName="Apartment" />
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Category">
             <EntityTypeMapping TypeName="DBModel.Category">
               <MappingFragment StoreEntitySet="Category">
@@ -1044,6 +1301,14 @@
                 <ScalarProperty Name="IdCheckSheet" ColumnName="IdCheckSheet" />
                 <ScalarProperty Name="NameCheckSheet" ColumnName="NameCheckSheet" />
                 <ScalarProperty Name="IdStatusTask" ColumnName="IdStatusTask" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="DBModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="NameCity" ColumnName="NameCity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1078,8 +1343,7 @@
                 <ScalarProperty Name="IdPassport" ColumnName="IdPassport" />
                 <ScalarProperty Name="SeriesPassport" ColumnName="SeriesPassport" />
                 <ScalarProperty Name="NumberPassport" ColumnName="NumberPassport" />
-                <ScalarProperty Name="DepartmentCodePassport" ColumnName="DepartmentCodePassport" />
-                <ScalarProperty Name="RegistrationAddressPassport" ColumnName="RegistrationAddressPassport" />
+                <ScalarProperty Name="IdAddress" ColumnName="IdAddress" />
                 <ScalarProperty Name="IdIssuedByWhom" ColumnName="IdIssuedByWhom" />
                 <ScalarProperty Name="IdStatusDelete" ColumnName="IdStatusDelete" />
               </MappingFragment>
@@ -1090,6 +1354,14 @@
               <MappingFragment StoreEntitySet="Prirority">
                 <ScalarProperty Name="IdPrirority" ColumnName="IdPrirority" />
                 <ScalarProperty Name="NamePrirority" ColumnName="NamePrirority" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Region">
+            <EntityTypeMapping TypeName="DBModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="NameRegion" ColumnName="NameRegion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1127,7 +1399,7 @@
                 <ScalarProperty Name="NumberPhoneStaff" ColumnName="NumberPhoneStaff" />
                 <ScalarProperty Name="DateOfBirthStaff" ColumnName="DateOfBirthStaff" />
                 <ScalarProperty Name="IdGender" ColumnName="IdGender" />
-                <ScalarProperty Name="AdressStaff" ColumnName="AdressStaff" />
+                <ScalarProperty Name="IdAddress" ColumnName="IdAddress" />
                 <ScalarProperty Name="IdJobTitle" ColumnName="IdJobTitle" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="PhotoStaff" ColumnName="PhotoStaff" />
@@ -1169,6 +1441,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Street">
+            <EntityTypeMapping TypeName="DBModel.Street">
+              <MappingFragment StoreEntitySet="Street">
+                <ScalarProperty Name="IdStreet" ColumnName="IdStreet" />
+                <ScalarProperty Name="NameStreet" ColumnName="NameStreet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="DBModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -1197,6 +1477,7 @@
                 <ScalarProperty Name="IdStatusDeadline" ColumnName="IdStatusDeadline" />
                 <ScalarProperty Name="DateDeadline" ColumnName="DateDeadline" />
                 <ScalarProperty Name="DateStartTask" ColumnName="DateStartTask" />
+                <ScalarProperty Name="Documents" ColumnName="Documents" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

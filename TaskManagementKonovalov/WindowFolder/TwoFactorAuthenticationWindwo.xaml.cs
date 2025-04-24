@@ -97,7 +97,6 @@ namespace TaskManagementKonovalov.WindowFolder
         private int code;
         private string path;
         private string email;
-        private int types;
         Window windows;
         private AlternateView html_view;
 
@@ -105,29 +104,20 @@ namespace TaskManagementKonovalov.WindowFolder
         {
             if (CheckTb.Text == code.ToString())
             {
-                if (types == 1)
+                switch (users.IdRole)
                 {
-                    switch (users.IdRole)
-                    {
-                        case 1:
-                            (App.Current as App).DeptName = users.LoginUser;
-                            new AdminWindowFolder.MainWindowAdmin(false).Show();
-                            this.Close();
-                            windows.Close();
-                            break;
-                        case 2:
-                            (App.Current as App).DeptName = users.LoginUser;
-                            new StaffWindowFolder.MainWindowStaff(false).Show();
-                            this.Close();
-                            windows.Close();
-                            break;
-                    }
-                }
-                else
-                {
-                    new AuthorizationWindowNoneCapchaWindow().Show();
-                    this.Close();
-                    windows.Close();
+                    case 1:
+                        (App.Current as App).DeptName = users.LoginUser;
+                        new AdminWindowFolder.MainWindowAdmin(false).Show();
+                        this.Close();
+                        windows.Close();
+                        break;
+                    case 2:
+                        (App.Current as App).DeptName = users.LoginUser;
+                        new StaffWindowFolder.MainWindowStaff(false).Show();
+                        this.Close();
+                        windows.Close();
+                        break;
                 }
             }
             else
@@ -175,6 +165,14 @@ namespace TaskManagementKonovalov.WindowFolder
                         MBClass.ErrorMB($"Error");
                     }
                 }
+            }
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
             }
         }
     }

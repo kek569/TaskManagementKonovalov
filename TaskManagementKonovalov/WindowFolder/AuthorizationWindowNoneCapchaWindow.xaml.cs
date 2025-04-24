@@ -191,7 +191,7 @@ namespace TaskManagementKonovalov.WindowFolder
                         LoginTB.Focus();
                         return;
                     }
-                    if (user.PasswordUser != PasswordSave)
+                    else if (user.PasswordUser != PasswordSave)
                     {
                         faille = faille + 1;
 
@@ -214,7 +214,26 @@ namespace TaskManagementKonovalov.WindowFolder
                             }
                         }
 
-                        new TwoFactorAuthenticationWindwo(user, this).Show();
+                        if (user.IdStatusTwoFactorAuthentication == 1)
+                        {
+                            new TwoFactorAuthenticationWindwo(user, this).Show();
+                        }
+                        else if (user.IdStatusTwoFactorAuthentication == 2)
+                        {
+                            switch (user.IdRole)
+                            {
+                                case 1:
+                                    (App.Current as App).DeptName = user.LoginUser;
+                                    new AdminWindowFolder.MainWindowAdmin(false).Show();
+                                    this.Close();
+                                    break;
+                                case 2:
+                                    (App.Current as App).DeptName = user.LoginUser;
+                                    new StaffWindowFolder.MainWindowStaff(false).Show();
+                                    this.Close();
+                                    break;
+                            }
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -260,6 +279,53 @@ namespace TaskManagementKonovalov.WindowFolder
                         LoginTB.Text = LoginSave;
                         PasswordPB.Password = PasswordSave;
                         SaveMeCb.IsChecked = true;
+
+                        var user = DBEntities.GetContext()
+                            .User
+                            .FirstOrDefault(u => u.LoginUser == LoginSave);
+
+                        if (user == null)
+                        {
+                            faille = faille + 1;
+
+                            if (faille >= 3)
+                            {
+                                Capcha();
+                            }
+
+                            MBClass.ErrorMB("Введен не правильный логин или пароль");
+                            LoginTB.Focus();
+                            return;
+                        }
+                        else if (user.PasswordUser != PasswordSave)
+                        {
+                            faille = faille + 1;
+
+                            if (faille >= 3)
+                            {
+                                Capcha();
+                            }
+
+                            MBClass.ErrorMB("Введен не правильный логин или пароль");
+                            PasswordPB.Focus();
+                            return;
+                        }
+                        else
+                        {
+                            switch (user.IdRole)
+                            {
+                                case 1:
+                                    (App.Current as App).DeptName = user.LoginUser;
+                                    new AdminWindowFolder.MainWindowAdmin(false).Show();
+                                    this.Close();
+                                    break;
+                                case 2:
+                                    (App.Current as App).DeptName = user.LoginUser;
+                                    new StaffWindowFolder.MainWindowStaff(false).Show();
+                                    this.Close();
+                                    break;
+                            }
+                        }
 
                         //Login();
                     }
