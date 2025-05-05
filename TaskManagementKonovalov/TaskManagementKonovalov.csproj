@@ -70,16 +70,16 @@
     </ApplicationDefinition>
     <Compile Include="ClassFolder\ClassImage.cs" />
     <Compile Include="ClassFolder\MBClass.cs" />
-    <Compile Include="DataFolder\Address.cs">
+    <Compile Include="DataFolder\Category.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\Category.cs">
+    <Compile Include="DataFolder\ChatProject.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataFolder\CheckSheet.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\City.cs">
+    <Compile Include="DataFolder\Classification.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataFolder\ContextClass.cs" />
@@ -98,22 +98,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\Gender.cs">
+    <Compile Include="DataFolder\Directions.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\IssuedByWhom.cs">
+    <Compile Include="DataFolder\Gender.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataFolder\JobTitle.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\Passport.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataFolder\Prirority.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\Region.cs">
+    <Compile Include="DataFolder\Project.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataFolder\Report.cs">
@@ -137,9 +134,6 @@
     <Compile Include="DataFolder\StatusTwoFactorAuthentication.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFolder\Street.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataFolder\sysdiagrams.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -149,14 +143,8 @@
     <Compile Include="DataFolder\User.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PageFolder\AdminPageFolder\AddPassportPage.xaml.cs">
-      <DependentUpon>AddPassportPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="PageFolder\AdminPageFolder\AddStaffPage.xaml.cs">
       <DependentUpon>AddStaffPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PageFolder\AdminPageFolder\EditePassportPage.xaml.cs">
-      <DependentUpon>EditePassportPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageFolder\AdminPageFolder\EditeStaffPage.xaml.cs">
       <DependentUpon>EditeStaffPage.xaml</DependentUpon>
@@ -212,15 +200,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PageFolder\AdminPageFolder\AddPassportPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="PageFolder\AdminPageFolder\AddStaffPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="PageFolder\AdminPageFolder\EditePassportPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -329,7 +309,6 @@
   <ItemGroup>
     <Resource Include="ResourceFolder\ImageFolder\Air.png" />
     <Resource Include="ResourceFolder\ImageFolder\Close.png" />
-    <Resource Include="ResourceFolder\ImageFolder\Logo.png" />
     <Resource Include="ResourceFolder\ImageFolder\Personal.png" />
   </ItemGroup>
   <ItemGroup>
@@ -381,6 +360,9 @@
     <Resource Include="SaveFolder\Save.txt" />
     <Resource Include="SaveFolder\SavePathDictionary.txt" />
     <Resource Include="SaveFolder\SaveThemeSettings.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFolder\ImageFolder\Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataFolder\DBModel.Context.tt">

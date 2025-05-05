@@ -12,18 +12,14 @@ namespace TaskManagementKonovalov.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Region
+    public partial class ChatProject
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Region()
-        {
-            this.Address = new HashSet<Address>();
-        }
+        public int IdChatProject { get; set; }
+        public int IdProject { get; set; }
+        public int IdStaff { get; set; }
+        public string Message { get; set; }
     
-        public int IdRegion { get; set; }
-        public string NameRegion { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Address> Address { get; set; }
+        public virtual Project Project { get; set; }
+        public virtual Staff Staff { get; set; }
     }
 }

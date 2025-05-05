@@ -44,27 +44,7 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
             NumberPhoneStaffTb.MaxLength = 28;
             DateOfBirthStaffDp.DisplayDateEnd = DateTime.Now.AddYears(-18);
 
-            LastNameStaffTb.Text = (App.Current as App).LastNameStaffTextAdd;
-            FirstNameStaffTb.Text = (App.Current as App).FirstNameStaffTextAdd;
-            MiddleNameStaffTb.Text = (App.Current as App).MiddleNameStaffTextAdd;
-            NumberPhoneStaffTb.Text = (App.Current as App).NumberPhoneStaffTextAdd;
-            DateOfBirthStaffDp.Text = (App.Current as App).DateOfBirthStaffTextAdd;
-            AdressStaffTb.Text = (App.Current as App).AdressStaffTextAdd;
-            PassportSeriesTb.Text = (App.Current as App).PassportSeriesTextAdd;
-            PassportNumberTb.Text = (App.Current as App).PassportNumberTextAdd;
-            PhotoIM.Source = (App.Current as App).PhotoStaffAdd;
-            selectedFileName = (App.Current as App).SelectedFileNameStaffAdd;
-
             WarningLb.Content = "";
-
-            var timer = new DispatcherTimer
-            { Interval = TimeSpan.FromSeconds(0.01) };
-            timer.Start();
-            timer.Tick += (sender, args) =>
-            {
-                timer.Stop();
-                GenderCb.SelectedValue = (App.Current as App).GenderSelectedValueAdd;
-            };
         }
 
         private string path;
@@ -136,11 +116,6 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
             {
                 MBClass.ErrorMB("Введите дату рождения");
                 DateOfBirthStaffDp.Focus();
-            }
-            else if (string.IsNullOrWhiteSpace(AdressStaffTb.Text))
-            {
-                MBClass.ErrorMB("Введите адрес");
-                AdressStaffTb.Focus();
             }
             else if (string.IsNullOrWhiteSpace(LoginTb.Text))
             {
@@ -231,7 +206,6 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
                     DateOfBirthStaff = DateTime.Parse(DateOfBirthStaffDp.Text),
                     IdGender = Int32.Parse(GenderCb.SelectedValue.ToString()),
                     IdUser = LastIdUser,
-                    IdAddress = 1,
                     IdJobTitle = Int32.Parse(JobTitleCb.SelectedValue.ToString())
                 };
                 DBEntities.GetContext().Staff.Add(staffAdd);
@@ -265,7 +239,6 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
                     DateOfBirthStaff = System.DateTime.Parse(DateOfBirthStaffDp.Text),
                     IdGender = Int32.Parse(GenderCb.SelectedValue.ToString()),
                     IdUser = LastIdUser,
-                    IdAddress = 1,
                     IdJobTitle = Int32.Parse(JobTitleCb.SelectedValue.ToString()),
                     PhotoStaff = ClassImage.ConvertImageToArray(selectedFileName)
                 };
@@ -309,26 +282,6 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
             selectedFileName = "";
 
             WarningLb.Content = "";
-        }
-
-        private void MorePassportBtn_Click(object sender, RoutedEventArgs e)
-        {
-            (App.Current as App).LastNameStaffTextAdd = LastNameStaffTb.Text;
-            (App.Current as App).FirstNameStaffTextAdd = FirstNameStaffTb.Text;
-            (App.Current as App).MiddleNameStaffTextAdd = MiddleNameStaffTb.Text;
-            (App.Current as App).NumberPhoneStaffTextAdd = NumberPhoneStaffTb.Text;
-            (App.Current as App).DateOfBirthStaffTextAdd = DateOfBirthStaffDp.Text;
-            (App.Current as App).AdressStaffTextAdd = AdressStaffTb.Text;
-            (App.Current as App).GenderSelectedValueAdd = GenderCb.SelectedValue;
-            (App.Current as App).PhotoStaffAdd = PhotoIM.Source;
-            (App.Current as App).SelectedFileNameStaffAdd = selectedFileName;
-
-            NavigationService.Navigate(new AddPassportPage());
-        }
-
-        private void MoreAddressBtn_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

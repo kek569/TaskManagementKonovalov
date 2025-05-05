@@ -12,29 +12,25 @@ namespace TaskManagementKonovalov.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Passport
+    public partial class Project
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Passport()
+        public Project()
         {
-            this.Staff = new HashSet<Staff>();
+            this.ChatProject = new HashSet<ChatProject>();
         }
     
-        public int IdPassport { get; set; }
-        public int SeriesPassport { get; set; }
-        public int NumberPassport { get; set; }
-        public int IdAddress { get; set; }
-        public int IdIssuedByWhom { get; set; }
-        public int IdStatusDelete { get; set; }
+        public int IdProject { get; set; }
+        public string NameProject { get; set; }
+        public System.DateTime DateCreateProject { get; set; }
+        public string TargetProject { get; set; }
+        public string DescriptionsProject { get; set; }
+        public int IdStaff { get; set; }
+        public int IdTask { get; set; }
     
-        public virtual Address Address { get; set; }
-        public virtual IssuedByWhom IssuedByWhom { get; set; }
-        public virtual StatusDelete StatusDelete { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Staff> Staff { get; set; }
-        public string PlaceIssuePassport { get; internal set; }
-        public object DateUssuePassport { get; internal set; }
-        public string DepartmentCodePassport { get; internal set; }
-        public string RegistrationAddressPassport { get; internal set; }
+        public virtual ICollection<ChatProject> ChatProject { get; set; }
+        public virtual Staff Staff { get; set; }
+        public virtual Task Task { get; set; }
     }
 }

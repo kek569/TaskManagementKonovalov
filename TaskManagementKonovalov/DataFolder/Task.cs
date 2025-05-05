@@ -14,6 +14,12 @@ namespace TaskManagementKonovalov.DataFolder
     
     public partial class Task
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Task()
+        {
+            this.Project = new HashSet<Project>();
+        }
+    
         public int IdTask { get; set; }
         public string NameTask { get; set; }
         public string DescriptionTask { get; set; }
@@ -33,6 +39,8 @@ namespace TaskManagementKonovalov.DataFolder
         public virtual Category Category { get; set; }
         public virtual CheckSheet CheckSheet { get; set; }
         public virtual Prirority Prirority { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Project> Project { get; set; }
         public virtual Staff Staff { get; set; }
         public virtual StatusDeadline StatusDeadline { get; set; }
         public virtual StatusDelete StatusDelete { get; set; }

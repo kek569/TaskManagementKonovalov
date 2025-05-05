@@ -144,42 +144,6 @@ Grid.Column="6"
           DisplayMemberPath="NameRole"
                   PreviewKeyDown="RoleCb_PreviewKeyDown"/>
 
-        <Label Content="Паспорт"
-Grid.Row="11"
-Grid.Column="2"
-Style="{StaticResource LabelNormal}"/>
-        <TextBox x:Name="PassportSeriesTb"
-  Grid.Row="11"
-  Grid.Column="3"
-                 SpellCheck.IsEnabled="False"
-                 IsEnabled="False"/>
-        <TextBox x:Name="PassportNumberTb"
-Grid.Row="11"
-Grid.Column="3"
- Margin="103,10,10,10"
-                 SpellCheck.IsEnabled="False"
-                 IsEnabled="False"/>
-
-        <Button x:Name="MorePassportBtn"
-                Content="+"
-                Grid.Row="11"
-                Grid.Column="1"
-                Click="MorePassportBtn_Click"/>
-
-        <Label Content="Адрес"
-               Grid.Row="14"
-               Grid.Column="2"
-               Style="{StaticResource LabelNormal}"/>
-        <TextBox x:Name="AddressTb"
-                 Grid.Row="14"
-                 Grid.Column="3"/>
-
-        <Button x:Name="MoreAddressBtn"
-                Content="+"
-                Grid.Row="14"
-                Grid.Column="1"
-                Click="MoreAddressBtn_Click"/>
-
         <Image x:Name="PhotoIM"
        Grid.Row="11"
        Grid.Column="5"

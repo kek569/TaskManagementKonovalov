@@ -145,7 +145,7 @@ namespace TaskManagementKonovalov.WindowFolder.AdminWindowFolder
 
         private void SettingsBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new SettingsPage("MainWindowStaff", this));
+            MainFrame.Navigate(new SettingsPage("MainWindowAdmin", this));
 
             MenuGr.Margin = new Thickness(1000);
             CloseMenuIm.Margin = new Thickness(1000);

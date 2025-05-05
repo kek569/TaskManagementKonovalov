@@ -17,6 +17,8 @@ namespace TaskManagementKonovalov.DataFolder
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Staff()
         {
+            this.ChatProject = new HashSet<ChatProject>();
+            this.Project = new HashSet<Project>();
             this.Report = new HashSet<Report>();
             this.Task = new HashSet<Task>();
         }
@@ -28,18 +30,23 @@ namespace TaskManagementKonovalov.DataFolder
         public string NumberPhoneStaff { get; set; }
         public System.DateTime DateOfBirthStaff { get; set; }
         public int IdGender { get; set; }
-        public int IdAddress { get; set; }
         public int IdJobTitle { get; set; }
         public int IdUser { get; set; }
         public byte[] PhotoStaff { get; set; }
-        public int IdPassport { get; set; }
         public int IdStatusDelete { get; set; }
         public string Email { get; set; }
+        public int IdClassification { get; set; }
+        public int IdDirections { get; set; }
+        public string Experience { get; set; }
     
-        public virtual Address Address { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChatProject> ChatProject { get; set; }
+        public virtual Classification Classification { get; set; }
+        public virtual Directions Directions { get; set; }
         public virtual Gender Gender { get; set; }
         public virtual JobTitle JobTitle { get; set; }
-        public virtual Passport Passport { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Project> Project { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report> Report { get; set; }
         public virtual StatusDelete StatusDelete { get; set; }

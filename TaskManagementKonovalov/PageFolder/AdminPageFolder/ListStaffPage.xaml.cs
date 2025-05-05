@@ -152,5 +152,10 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
                 MBClass.ErrorMB(ex);
             }
         }
+
+        private void ViewerStaffMi_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

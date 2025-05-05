@@ -25,16 +25,15 @@ namespace TaskManagementKonovalov.DataFolder
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Address> Address { get; set; }
         public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<ChatProject> ChatProject { get; set; }
         public virtual DbSet<CheckSheet> CheckSheet { get; set; }
-        public virtual DbSet<City> City { get; set; }
+        public virtual DbSet<Classification> Classification { get; set; }
+        public virtual DbSet<Directions> Directions { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
-        public virtual DbSet<IssuedByWhom> IssuedByWhom { get; set; }
         public virtual DbSet<JobTitle> JobTitle { get; set; }
-        public virtual DbSet<Passport> Passport { get; set; }
         public virtual DbSet<Prirority> Prirority { get; set; }
-        public virtual DbSet<Region> Region { get; set; }
+        public virtual DbSet<Project> Project { get; set; }
         public virtual DbSet<Report> Report { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Staff> Staff { get; set; }
@@ -42,7 +41,6 @@ namespace TaskManagementKonovalov.DataFolder
         public virtual DbSet<StatusDelete> StatusDelete { get; set; }
         public virtual DbSet<StatusTask> StatusTask { get; set; }
         public virtual DbSet<StatusTwoFactorAuthentication> StatusTwoFactorAuthentication { get; set; }
-        public virtual DbSet<Street> Street { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Task> Task { get; set; }
         public virtual DbSet<User> User { get; set; }

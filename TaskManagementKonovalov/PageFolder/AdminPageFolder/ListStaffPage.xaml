@@ -37,6 +37,9 @@
                 BorderThickness="0">
             <ListBox.ContextMenu>
                 <ContextMenu>
+                    <MenuItem Header="Посмотреть данные"
+                              Name="ViewerStaffMi"
+                              Click="ViewerStaffMi_Click"/>
                     <MenuItem Header="Добавление"
                           Name="AddStaffMi"
                           Click="AddStaffMi_Click"/>
@@ -58,186 +61,80 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
                             <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="75"/>
                             <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="130"/>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="80"/>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="130"/>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="85"/>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="150"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="5"/>
                             <RowDefinition Height="50"/>
+                            <RowDefinition Height="5"/>
                             <RowDefinition Height="50"/>
-                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
-
-                        <StackPanel Grid.Column="1"
-                                    Grid.RowSpan="3"
-                                    Background="{StaticResource FillLineLb}"/>
-
-                        <StackPanel Grid.Column="5"
-            Grid.RowSpan="3"
-            Background="{StaticResource FillLineLb}"/>
-
-                        <StackPanel Grid.Column="9"
-            Grid.RowSpan="3"
-            Background="{StaticResource FillLineLb}"/>
-
-                        <StackPanel Grid.Column="2"
-                                    Grid.ColumnSpan="3"
-                                    Grid.RowSpan="3"
-                                    Background="{StaticResource FillFonLb}"/>
-
-                        <StackPanel Grid.Column="6"
-            Grid.ColumnSpan="3"
-            Grid.RowSpan="3"
-            Background="{StaticResource FillFonLb}"/>
-
-                        <StackPanel Grid.Column="10"
-            Grid.ColumnSpan="3"
-            Grid.RowSpan="3"
-            Background="{StaticResource FillFonLb}"/>
-
-                        <TextBlock x:Name="FirstNameStaffTb"
-                            Grid.Column="1"
-            TextWrapping="WrapWithOverflow"
-                                   VerticalAlignment="Center"
-            Text="Фамилия:"
-                                   Style="{DynamicResource TBlListBox}"
-                                   TextAlignment="Right"/>
-                        <TextBlock Grid.Column="1"
-                                   Grid.Row="1"
-                                   TextWrapping="WrapWithOverflow"
-            Text="Имя:"
-                                       Style="{DynamicResource TBlListBox}"
-                                   TextAlignment="Right"/>
-                        <TextBlock Grid.Column="1"
-                                   Grid.Row="2"
-                                   TextWrapping="WrapWithOverflow"
-            Text="Отчество:"
-                                       Style="{DynamicResource TBlListBox}"
-                                   TextAlignment="Right"/>
-                        <TextBlock Grid.Column="5"
-Text="Пол:"
-                          Style="{DynamicResource TBlListBox}"
-                      TextWrapping="WrapWithOverflow"
-                      TextAlignment="Right"/>
-                        <TextBlock Grid.Column="5"
-                                   Grid.Row="2"
-             Text="День рождения:"
-                                       Style="{DynamicResource TBlListBox}"
-                                   TextWrapping="WrapWithOverflow"
-                                   TextAlignment="Right"/>
-                        <TextBlock Grid.Column="9"
-             Text="Адрес:"
-                                       Style="{DynamicResource TBlListBox}"
-                                   TextWrapping="WrapWithOverflow"
-                                   TextAlignment="Right"/>
-                        <TextBlock Grid.Column="5"
-                                   Grid.Row="1"
-             Text="Номер телефона:"
-                                       Style="{DynamicResource TBlListBox}"
-                                   TextWrapping="WrapWithOverflow"
-                                   TextAlignment="Right"/>
-
-
-
-                        <TextBlock Grid.Column="9"
-                                   Grid.Row="1"
-             Text="Логин:"
-                                       Style="{DynamicResource TBlListBox}"
-                                   TextWrapping="WrapWithOverflow"
-                                   VerticalAlignment="Bottom"
-                                   TextAlignment="Right"/>
-                        <TextBlock Grid.Column="9"
-                      Grid.Row="2"
-                        Text="Роль:"
-                          Style="{DynamicResource TBlListBox}"
-                      TextWrapping="WrapWithOverflow"
-                      TextAlignment="Right"/>
+                        
                         <Image Source="{Binding PhotoStaff}"
-                               Width="200" Grid.RowSpan="3"
+                               Grid.Row="1"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="5"
+                               Width="200"
                                Margin="10"
                                Stretch="Uniform"/>
-                        <TextBlock Grid.Column="3"
+                        <TextBlock Grid.Row="3"
+                                   Grid.Column="1"
                                    Text="{Binding FirstNameStaff}"
                                    Style="{DynamicResource TBlListBox}"
-                                   TextAlignment="Left"
+                                   TextAlignment="Center"
                                    TextWrapping="WrapWithOverflow"/>
-                        <TextBlock Grid.Column="3"
-                                   Grid.Row="1"
+                        <TextBlock Grid.Row="5"
+                                   Grid.Column="1"
                                    Text="{Binding LastNameStaff}"
                                    Style="{DynamicResource TBlListBox}"
-                                   TextAlignment="Left"
+                                   TextAlignment="Center"
                                    TextWrapping="WrapWithOverflow"/>
-                        <TextBlock Grid.Column="3"
-                                   Grid.Row="2"
+                        <TextBlock Grid.Row="7"
+                                   Grid.Column="1"
                                    Text="{Binding MiddleNameStaff}"
                                    Style="{DynamicResource TBlListBox}"
-                                   TextAlignment="Left"
-                                   TextWrapping="WrapWithOverflow"/>
-                        <TextBlock Grid.Column="7"
-           Text="{Binding Gender.NameGender}"
-           Style="{DynamicResource TBlListBox}"
-           TextAlignment="Left"
-           TextWrapping="WrapWithOverflow"/>
-                        <TextBlock Grid.Column="7"
-                                   Grid.Row="2"
-                                    Text="{Binding DateOfBirthStaff, StringFormat={}{0:yyyy.MM.dd}}"
-                                   Style="{DynamicResource TBlListBox}"
-                                   TextAlignment="Left"
-                                   TextWrapping="WrapWithOverflow"/>
-                        <TextBlock Grid.Column="11"
-                                    Text="{Binding AdressStaff}"
-                                   Style="{DynamicResource TBlListBox}"
-                                   TextAlignment="Left"
-                                   TextWrapping="WrapWithOverflow"/>
-                        <TextBlock Grid.Column="7"
-                                   Grid.Row="1"
-                                    Text="{Binding NumberPhoneStaff}"
-                                   Style="{DynamicResource TBlListBox}"
-                                   TextAlignment="Left"
+                                   TextAlignment="Center"
                                    TextWrapping="WrapWithOverflow"/>
 
-                        <TextBlock Grid.Column="11"
-                                   Grid.Row="1"
-                                    Text="{Binding User.LoginUser}"
+                        <TextBlock Grid.Row="9"
+                                   Grid.Column="1"
+                                   Text="{Binding Classification.NameClassification}"
+                                   Style="{DynamicResource TBlListBox}"
+                                   TextAlignment="Center"
+                                   TextWrapping="WrapWithOverflow"/>
+
+                        <TextBlock Grid.Row="11"
+                                   Grid.Column="1"
+                                   Text="{Binding Directions.NameDirections}"
                                    Style="{DynamicResource TBlListBox}"
                                    TextAlignment="Left"
+                                   TextWrapping="WrapWithOverflow"/>
+                        <TextBlock Grid.Row="11"
+                                   Grid.Column="1"
+                                   Text="{Binding Experience}"
+                                   Style="{DynamicResource TBlListBox}"
+                                   TextAlignment="Right"
                                    VerticalAlignment="Bottom"
                                    TextWrapping="WrapWithOverflow"/>
-                        <TextBlock Grid.Column="11"
-                               Grid.Row="2"
-                                Text="{Binding User.Role.NameRole}"
-                               TextAlignment="Left"
-                               Style="{DynamicResource TBlListBox}"
-                               TextWrapping="WrapWithOverflow"/>
-
-                        <TextBlock Grid.Column="11"
-                                   Grid.Row="1"
-                                   Text="{Binding JobTitle.NameJobTitle}"
-                                   Style="{DynamicResource TBlListBox}"
-                                   TextAlignment="Left"
-                                   VerticalAlignment="Stretch"
-                                   TextWrapping="WrapWithOverflow"/>
-                        <TextBlock Grid.Column="9"
-                                    Grid.Row="1"
-                                    Text="Должность:"
-                                    Style="{DynamicResource TBlListBox}"
-                                    TextWrapping="WrapWithOverflow"
-                                   VerticalAlignment="Stretch"
-                                    TextAlignment="Right"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
         </ListBox>
     </Grid>
 </Page>
