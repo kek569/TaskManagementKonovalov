@@ -41,6 +41,8 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
             GenderCb.ItemsSource = DBEntities.GetContext().Gender.ToList();
             JobTitleCb.ItemsSource = DBEntities.GetContext().JobTitle.ToList();
             RoleCb.ItemsSource = DBEntities.GetContext().Role.ToList();
+            ClassificationCb.ItemsSource = DBEntities.GetContext().Classification.ToList();
+            DirectionsCb.ItemsSource = DBEntities.GetContext().Directions.ToList();
             NumberPhoneStaffTb.MaxLength = 28;
             DateOfBirthStaffDp.DisplayDateEnd = DateTime.Now.AddYears(-18);
 
@@ -56,16 +58,9 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
 
         Staff staff = new Staff();
         string selectedFileName = "";
-        private string leng;
-        private string TextPassword;
         private string MiddleName;
         private string MiddleNameFull;
-        private int Check = 0;
         private int LastIdUser;
-        private int LastIdSecretary;
-        private int LastIdDirector;
-        private int LastIdStaff;
-        private int Rem = 0;
 
         private void AddPhoto()
         {
@@ -142,6 +137,21 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
                 MBClass.ErrorMB("Введите роль");
                 RoleCb.Focus();
             }
+            else if (ClassificationCb.SelectedIndex <= -1)
+            {
+                MBClass.ErrorMB("Введите классификацию");
+                ClassificationCb.Focus();
+            }
+            else if (DirectionsCb.SelectedIndex <= 1)
+            {
+                MBClass.ErrorMB("Введите направления");
+                DirectionsCb.Focus();
+            }
+            else if (string.IsNullOrWhiteSpace(ExperienceTb.Text))
+            {
+                MBClass.ErrorMB("Введите стаж");
+                ExperienceTb.Focus();
+            }
             else
             {
                 Staff staffs = new Staff();
@@ -206,7 +216,10 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
                     DateOfBirthStaff = DateTime.Parse(DateOfBirthStaffDp.Text),
                     IdGender = Int32.Parse(GenderCb.SelectedValue.ToString()),
                     IdUser = LastIdUser,
-                    IdJobTitle = Int32.Parse(JobTitleCb.SelectedValue.ToString())
+                    IdJobTitle = Int32.Parse(JobTitleCb.SelectedValue.ToString()),
+                    IdClassification = Int32.Parse(ClassificationCb.SelectedValue.ToString()),
+                    IdDirections = Int32.Parse(DirectionsCb.SelectedValue.ToString()),
+                    Experience = ExperienceTb.Text
                 };
                 DBEntities.GetContext().Staff.Add(staffAdd);
                 DBEntities.GetContext().SaveChanges();
@@ -240,6 +253,9 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
                     IdGender = Int32.Parse(GenderCb.SelectedValue.ToString()),
                     IdUser = LastIdUser,
                     IdJobTitle = Int32.Parse(JobTitleCb.SelectedValue.ToString()),
+                    IdClassification = Int32.Parse(ClassificationCb.SelectedValue.ToString()),
+                    IdDirections = Int32.Parse(DirectionsCb.SelectedValue.ToString()),
+                    Experience = ExperienceTb.Text,
                     PhotoStaff = ClassImage.ConvertImageToArray(selectedFileName)
                 };
                 DBEntities.GetContext().Staff.Add(staffAdd);

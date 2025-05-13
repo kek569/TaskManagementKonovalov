@@ -43,8 +43,9 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
             GenderCb.ItemsSource = DBEntities.GetContext().Gender.ToList();
             JobTitleCb.ItemsSource = DBEntities.GetContext().JobTitle.ToList();
             RoleCb.ItemsSource = DBEntities.GetContext().Role.ToList();
+            ClassificationCb.ItemsSource = DBEntities.GetContext().Classification.ToList();
+            DirectionsCb.ItemsSource = DBEntities.GetContext().Directions.ToList();
             NumberPhoneStaffTb.MaxLength = 28;
-            DateOfBirthStaffDp.DisplayDateEnd = DateTime.Now.AddYears(-18);
 
             staffs = DBEntities.GetContext().Staff.FirstOrDefault
                 (c => c.IdStaff == staff.IdStaff);
@@ -53,8 +54,10 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
             FirstNameStaffTb.Text = staffs.FirstNameStaff;
             MiddleNameStaffTb.Text = staffs.MiddleNameStaff;
             NumberPhoneStaffTb.Text = staffs.NumberPhoneStaff;
-            DateOfBirthStaffDp.Text = staffs.DateOfBirthStaff.ToString();
+            ExperienceTb.Text = staffs.Experience;
             PhotoIM.Source = ClassImage.ConvertByteArrayToImage(staffs.PhotoStaff);
+
+            WarningLb.Content = "";
 
             var timer = new DispatcherTimer
             { Interval = TimeSpan.FromSeconds(0.01) };
@@ -65,6 +68,8 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
                 GenderCb.SelectedValue = staffs.IdGender;
                 JobTitleCb.SelectedValue = staffs.IdJobTitle;
                 RoleCb.SelectedValue = staffs.User.IdRole;
+                ClassificationCb.SelectedValue = staffs.IdClassification;
+                DirectionsCb.SelectedValue = staffs.IdDirections;
             };
         }
 
@@ -131,16 +136,6 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
                 MBClass.ErrorMB("Введите номер телефона");
                 NumberPhoneStaffTb.Focus();
             }
-            else if (string.IsNullOrWhiteSpace(DateOfBirthStaffDp.Text))
-            {
-                MBClass.ErrorMB("Введите дату рождения");
-                DateOfBirthStaffDp.Focus();
-            }
-            else if (string.IsNullOrWhiteSpace(AdressStaffTb.Text))
-            {
-                MBClass.ErrorMB("Введите адрес");
-                AdressStaffTb.Focus();
-            }
             else if (GenderCb.SelectedIndex <= -1)
             {
                 MBClass.ErrorMB("Введите пол");
@@ -156,6 +151,21 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
                 MBClass.ErrorMB("Введите роль");
                 RoleCb.Focus();
             }
+            else if (ClassificationCb.SelectedIndex <= -1)
+            {
+                MBClass.ErrorMB("Введите классификацию");
+                ClassificationCb.Focus();
+            }
+            else if (DirectionsCb.SelectedIndex <= 1)
+            {
+                MBClass.ErrorMB("Введите направления");
+                DirectionsCb.Focus();
+            }
+            else if (string.IsNullOrWhiteSpace(ExperienceTb.Text))
+            {
+                MBClass.ErrorMB("Введите стаж");
+                ExperienceTb.Focus();
+            }
             else
             {
                 staffs.User.IdRole = Int32.Parse(RoleCb.SelectedValue.ToString());
@@ -170,10 +180,12 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
                 }
 
                 staffs.NumberPhoneStaff = NumberPhoneStaffTb.Text;
-                staffs.DateOfBirthStaff = DateTime.Parse(DateOfBirthStaffDp.Text);
                 staffs.IdGender = Int32.Parse(GenderCb.SelectedValue.ToString());
                 staffs.IdJobTitle = Int32.Parse(JobTitleCb.SelectedValue.ToString());
                 staffs.User.IdRole = Int32.Parse(RoleCb.SelectedValue.ToString());
+                staffs.IdClassification = Int32.Parse(ClassificationCb.SelectedValue.ToString());
+                staffs.IdDirections = Int32.Parse(DirectionsCb.SelectedValue.ToString());
+                staffs.Experience = ExperienceTb.Text;
 
                 if (selectedFileName != "")
                 {

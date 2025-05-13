@@ -10,8 +10,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="290"/>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="160"/>
@@ -144,6 +144,36 @@ Grid.Column="6"
           DisplayMemberPath="NameRole"
                   PreviewKeyDown="RoleCb_PreviewKeyDown"/>
 
+        <Label Content="Классификация"
+               Style="{StaticResource LabelNormal}"
+               Grid.Row="11"
+               Grid.Column="2"/>
+        <ComboBox Name="ClassificationCb"
+                  Grid.Row="11"
+                  Grid.Column="3"
+                  SelectedItem="{Binding Classification}"
+                  SelectedValuePath="IdClassification"
+                  DisplayMemberPath="NameClassification"/>
+
+        <Label Content="Направления"
+               Style="{StaticResource LabelNormal}"
+               Grid.Row="14"
+               Grid.Column="2"/>
+        <ComboBox x:Name="DirectionsCb"
+                  Grid.Row="14"
+                  Grid.Column="3"
+                  SelectedItem="{Binding Directions}"
+                  SelectedValuePath="IdDirections"
+                  DisplayMemberPath="NameDirections"/>
+
+        <Label Content="Стаж"
+               Style="{StaticResource LabelNormal}"
+               Grid.Row="16"
+               Grid.Column="2"/>
+        <TextBox x:Name="ExperienceTb"
+                 Grid.Row="16"
+                 Grid.Column="3"/>
+
         <Image x:Name="PhotoIM"
        Grid.Row="11"
        Grid.Column="5"
@@ -181,7 +211,7 @@ Style="{StaticResource TextBlockInBtn}"/>
   VerticalAlignment="Center">
                 <Image Style="{StaticResource AddIm}" 
    Margin="7"/>
-                <TextBlock x:Name="AddStaffTb" Text=" Добавить сотрудника" VerticalAlignment="Center" 
+                <TextBlock Text=" Добавить сотрудника" VerticalAlignment="Center" 
 Style="{StaticResource TextBlockInBtn}"/>
             </StackPanel>
         </Button>
