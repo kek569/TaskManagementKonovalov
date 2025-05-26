@@ -53,7 +53,7 @@
                Style="{DynamicResource LabelLogo}"
                Grid.Column="1"
                Grid.ColumnSpan="2"
-               Foreground="{DynamicResource FillFontOne}"/>
+               Foreground="{DynamicResource FillTextBorder}"/>
 
                 <Image Style="{DynamicResource CloseIm}"
             Grid.Column="2"
@@ -63,7 +63,7 @@
                 <Image x:Name="LogoIm"
 Grid.Row="0"
 Style="{DynamicResource LogoIm}"
-Margin="0,5,0,8"
+Margin="0,5,0,5"
                        Width="50"
                        Height="50"
                        Grid.Column="1"/>

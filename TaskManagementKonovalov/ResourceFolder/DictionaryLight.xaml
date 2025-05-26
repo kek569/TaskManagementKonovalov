@@ -1,14 +1,16 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <SolidColorBrush x:Key="FillFon" Color="#DFDCF4"/>
-    <SolidColorBrush x:Key="FillFont" Color="#000000"/>
+    <SolidColorBrush x:Key="FillFon" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="FillFont" Color="#3F4447"/>
     <SolidColorBrush x:Key="FillFontOne" Color="#FFFFFF"/>
-    <SolidColorBrush x:Key="FillAccentuation" Color="#8300EE"/>
+    <SolidColorBrush x:Key="FillAccentuation" Color="#006DE1"/>
     <SolidColorBrush x:Key="FillAccentuationOne" Color="#00000000"/>
-    <SolidColorBrush x:Key="FillLup" Color="#544D9F"/>
+    <SolidColorBrush x:Key="FillLup" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="FillTextBorder" Color="#3F4447"/>
     <SolidColorBrush x:Key="FillFonLb" Color="#DFDCF4"/>
     <SolidColorBrush x:Key="FillLineLb" Color="#C6C0F2"/>
+    <SolidColorBrush x:Key="FillBackground" Color="#F5F6F7"/>
 
     <Style x:Key="FonBorder"
    TargetType="Border">
@@ -20,7 +22,7 @@
 
     <Style x:Key="CloseIm" TargetType="Image">
         <Setter Property="Source" 
-        Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/Close.png"/>
+        Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/LightThemeImageFolder/CloseLight.png"/>
         <Setter Property="Width" Value="40"/>
         <Setter Property="Height" Value="40"/>
         <Setter Property="Margin" Value="10"/>
@@ -126,6 +128,26 @@ Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/LightThemeI
 Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/LightThemeImageFolder/StaffLight.png"/>
     </Style>
 
+    <Style x:Key="SearchIm" TargetType="Image">
+        <Setter Property="Source" 
+Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/LightThemeImageFolder/SearchLight.png"/>
+    </Style>
+
+    <Style x:Key="TaskIm" TargetType="Image">
+        <Setter Property="Source" 
+Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/LightThemeImageFolder/TaskLight.png"/>
+    </Style>
+
+    <Style x:Key="HistoryTaskIm" TargetType="Image">
+        <Setter Property="Source" 
+Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/LightThemeImageFolder/HistoryTaskLight.png"/>
+    </Style>
+
+    <Style x:Key="ReportIm" TargetType="Image">
+        <Setter Property="Source" 
+Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/LightThemeImageFolder/ReportLight.png"/>
+    </Style>
+
     <Style x:Key="FocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
@@ -159,7 +181,7 @@ Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/LightThemeI
     <Style TargetType="{x:Type CheckBox}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource OptionMark.Static.Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource OptionMark.Static.Border}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource FillAccentuation}"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
@@ -312,8 +334,8 @@ Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/LightThemeI
         <Setter Property="HorizontalContentAlignment"
         Value="Left"/>
         <Setter Property="Margin" Value="10"/>
-        <Setter Property="Background" Value="{x:Null}" />
-        <Setter Property="BorderBrush" Value="{StaticResource FillAccentuation}" />
+        <Setter Property="Background" Value="{StaticResource FillBackground}"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="{StaticResource FillFont}" />
         <Setter Property="Padding" Value="5,4,5,4" />
@@ -444,8 +466,8 @@ SnapsToDevicePixels="True">
         <Setter Property="Margin" Value="10"/>
         <Setter Property="PasswordChar"
         Value="✗"/>
-        <Setter Property="Background" Value="{x:Null}" />
-        <Setter Property="BorderBrush" Value="{StaticResource FillAccentuation}" />
+        <Setter Property="Background" Value="{StaticResource FillBackground}"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="{StaticResource FillFont}" />
         <Setter Property="Padding" Value="5,4,5,4" />
@@ -643,7 +665,7 @@ Value="{StaticResource FillFont}"/>
         <Setter Property="Margin" Value="10"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontFamily" Value="Inter"/>
-        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="Background" Value="{StaticResource FillBackground}"/>
         <Setter Property="Foreground" Value="{StaticResource FillFont}"/>
         <Setter Property="BorderBrush" Value="{StaticResource FillAccentuation}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -662,7 +684,7 @@ Value="{StaticResource FillFont}"/>
                                             <TranslateTransform X="0" Y="0"/>
                                         </TransformGroup>
                                     </RadialGradientBrush.RelativeTransform>
-                                    <GradientStop Offset="1" Color="#8E87C4"/>
+                                    <GradientStop Offset="1" Color="#F5F6F7"/>
                                 </RadialGradientBrush>
                             </Border.Background>
                             <ContentPresenter HorizontalAlignment="Center"
@@ -689,7 +711,10 @@ Value="{StaticResource FillFont}"/>
                             </Setter>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" TargetName="border" Value="#8A63B9"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource FillAccentuation}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource FillAccentuation}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" TargetName="grid" Value="0.25"/>

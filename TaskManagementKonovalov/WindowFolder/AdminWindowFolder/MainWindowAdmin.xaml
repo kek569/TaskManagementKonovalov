@@ -28,9 +28,10 @@
             Grid.RowSpan="2"/>
             <Label Grid.Row="1"
            Style="{StaticResource LabelLogo}"
-                   Foreground="{StaticResource FillFontOne}"
+                   Foreground="{StaticResource FillTextBorder}"
            Content="{Binding ElementName=MainFrame,
-            Path=Content.Title}"/>
+            Path=Content.Title}"
+                   FontSize="30"/>
             <Image x:Name="CloseIm"
            Grid.Row="1"
            Style="{DynamicResource CloseIm}"
@@ -43,35 +44,31 @@
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"/>
-                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="250"/>
                     <RowDefinition Height="10"/>
                     <RowDefinition/>
                     <RowDefinition Height="10"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="210"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="71"/>
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Row="1"
-                  Grid.Column="1">
+                  Grid.Column="1" Grid.ColumnSpan="2">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="75"/>
+                        <RowDefinition Height="130"/>
                         <RowDefinition Height="5"/>
                         <RowDefinition Height="30"/>
+                        <RowDefinition Height="85"/>
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="85"/>
-                        <ColumnDefinition Width="10"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
                     <Ellipse x:Name="AvatarEl"
-                     Width="75"
-                     Height="75"
-                             Margin="10, 0, 0, 0"
+                     Width="130"
+                     Height="130"
                      MouseLeftButtonDown="AvatarEl_MouseLeftButtonDown">
                         <Ellipse.Fill>
                             <ImageBrush x:Name="AvatarIm"/>
@@ -80,17 +77,16 @@
 
                     <Image x:Name="PersonalIm"
                        Style="{StaticResource PersonalIm}"
-                       Height="50"
-                       Width="50"
-                           Margin="10, 0, 0, 0"
+                       Height="90"
+                       Width="90"
                        MouseLeftButtonDown="PersonalIm_MouseLeftButtonDown"/>
 
                     <Label x:Name="FullNameLb"
+                           Grid.Row="3"
                        Content="Иванов&#10;Иван&#10;Иванович"
                        HorizontalContentAlignment="Left"
-                       FontSize="18"
+                       FontSize="20"
                        Style="{StaticResource LabelNormal}"
-                       Grid.Column="2"
                        Margin="0"/>
 
                     <Label Content="Администратор"
@@ -105,7 +101,7 @@
 
                 <StackPanel Grid.Row="3"
                         Grid.Column="1"
-                        Orientation="Vertical">
+                        Orientation="Vertical" Grid.ColumnSpan="2">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="70"/>
@@ -139,16 +135,88 @@ Margin="10"/>
                                 </Grid>
                             </StackPanel>
                         </Button>
+
+                        <Button x:Name="TaskBtn"
+                                Grid.Row="2"
+             Click="TaskBtn_Click">
+                            <StackPanel Orientation="Horizontal"
+ HorizontalAlignment="Left"
+ VerticalAlignment="Center">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Style="{StaticResource TaskIm}"
+                            Grid.Column="1"
+Margin="10"/>
+                                    <TextBlock Text="Задачи"
+                                Grid.Column="2"
+                                FontSize="18"
+    Style="{StaticResource TextBlockInBtn}"/>
+                                </Grid>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="HistoryTaskBtn"
+                                Grid.Row="4"
+             Click="HistoryTaskBtn_Click">
+                            <StackPanel Orientation="Horizontal"
+ HorizontalAlignment="Left"
+ VerticalAlignment="Center">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Style="{StaticResource HistoryTaskIm}"
+                            Grid.Column="1"
+Margin="10"/>
+                                    <TextBlock Text="История задач"
+                                Grid.Column="2"
+                                FontSize="18"
+    Style="{StaticResource TextBlockInBtn}"/>
+                                </Grid>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="ReportBtn"
+                                Grid.Row="6"
+             Click="ReportBtn_Click">
+                            <StackPanel Orientation="Horizontal"
+ HorizontalAlignment="Left"
+ VerticalAlignment="Center">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Style="{StaticResource ReportIm}"
+                            Grid.Column="1"
+                                           Margin="10"/>
+                                    <TextBlock Text="Отчеты"
+                                Grid.Column="2"
+                                FontSize="18"
+    Style="{StaticResource TextBlockInBtn}"/>
+                                </Grid>
+                            </StackPanel>
+                        </Button>
                     </Grid>
                 </StackPanel>
 
                 <Button x:Name="BackBtn"
                     Grid.Row="3"
                     Grid.Column="1"
-                    VerticalAlignment="Bottom"
+                    VerticalAlignment="Top"
                     Width="125"
                     Height="30"
-                        Click="BackBtn_Click">
+                        Click="BackBtn_Click" Grid.ColumnSpan="2" Margin="42,510,42,0">
                     <StackPanel Orientation="Horizontal"
  HorizontalAlignment="Left"
  VerticalAlignment="Center">
@@ -172,19 +240,19 @@ Margin="5"/>
 
                 <Frame x:Name="MainFrame"
                    Grid.Row="1"
-                   Grid.Column="3"
+                   Grid.Column="4"
                    Grid.RowSpan="3"
-                   Margin="10"
+                   Margin="10,10,10,10"
                    NavigationUIVisibility="Hidden"/>
 
                 <Image x:Name="CloseMenuIm"
                    Source="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/Air.png"
-                   Grid.ColumnSpan="5"
+                   Grid.ColumnSpan="6"
                    Grid.RowSpan="5"
                    MouseLeftButtonDown="CloseMenuIm_MouseLeftButtonDown"/>
 
                 <Grid x:Name="MenuGr"
-                  Grid.ColumnSpan="4"
+                  Grid.ColumnSpan="5"
                   Grid.RowSpan="4"
                   Background="{StaticResource FillLup}"
                       HorizontalAlignment="Left"

@@ -58,8 +58,12 @@ namespace TaskManagementKonovalov.WindowFolder.AdminWindowFolder
 
             if (staff.PhotoStaff != null)
             {
-                AvatarIm.ImageSource = ClassImage.ConvertByteArrayToImage(staff.PhotoStaff);
-                CopyAvatarIm.ImageSource = ClassImage.ConvertByteArrayToImage(staff.PhotoStaff);
+                var photo = ClassImage.ConvertByteArrayToImage(staff.PhotoStaff);
+                System.Drawing.Image image = ClassImage.ConvertToImage(photo);
+                var imageFix = ClassImage.FixedSize(image, 130, 130, true);
+
+                AvatarIm.ImageSource = ClassImage.ConvertToBitmapImage(imageFix);
+                CopyAvatarIm.ImageSource = ClassImage.ConvertToBitmapImage(imageFix);
 
                 PersonalIm.Margin = new Thickness(1000);
                 CopyPersonalIm.Margin = new Thickness(1000);
@@ -183,6 +187,21 @@ namespace TaskManagementKonovalov.WindowFolder.AdminWindowFolder
                     this.Close();
                 }
             }
+        }
+
+        private void TaskBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void HistoryTaskBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ReportBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

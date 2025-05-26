@@ -7,8 +7,10 @@
     <SolidColorBrush x:Key="FillAccentuation" Color="#806FE3"/>
     <SolidColorBrush x:Key="FillAccentuationOne" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="FillLup" Color="#464272"/>
+    <SolidColorBrush x:Key="FillTextBorder" Color="#3F4447"/>
     <SolidColorBrush x:Key="FillFonLb" Color="#1F1A4D"/>
     <SolidColorBrush x:Key="FillLineLb" Color="#0E0E3A"/>
+    <SolidColorBrush x:Key="FillBackground" Color="#3F4447"/>
 
     <Style x:Key="FonBorder"
    TargetType="Border">
@@ -20,7 +22,7 @@
 
     <Style x:Key="CloseIm" TargetType="Image">
         <Setter Property="Source" 
-        Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/Close.png"/>
+        Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/DarkThemeImageFolder/CloseDark.png"/>
         <Setter Property="Width" Value="40"/>
         <Setter Property="Height" Value="40"/>
         <Setter Property="Margin" Value="10"/>
@@ -159,7 +161,7 @@ Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/DarkThemeIm
     <Style TargetType="{x:Type CheckBox}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource OptionMark.Static.Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource OptionMark.Static.Border}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource FillAccentuation}"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">

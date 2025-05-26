@@ -51,7 +51,7 @@
                Grid.Column="1"
                Grid.ColumnSpan="2"
                        Margin="35, 0, 0, 0"
-               Foreground="{DynamicResource FillFontOne}"/>
+               Foreground="{DynamicResource FillTextBorder}"/>
 
                 <Image Style="{DynamicResource CloseIm}"
             Grid.Column="1"
