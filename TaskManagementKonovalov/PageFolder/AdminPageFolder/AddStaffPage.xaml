@@ -189,21 +189,22 @@ Grid.Column="6"
                Style="{StaticResource LabelLogo}"/>
 
         <Button x:Name="LoadPhotoBtn"
-    Grid.Column="3"
+    Grid.Column="6"
     Grid.Row="20"
     Click="LoadPhotoBtn_Click">
             <StackPanel Orientation="Horizontal"
   HorizontalAlignment="Center"
   VerticalAlignment="Center">
-                <Image Style="{StaticResource LoadPhotoIm}" 
-   Margin="7"/>
-                <TextBlock x:Name="LoadPhotoTb" Text=" Загрузить фото" VerticalAlignment="Center" 
-Style="{StaticResource TextBlockInBtn}"/>
+                <TextBlock x:Name="LoadPhotoTb" Text="Загрузить фото" VerticalAlignment="Center"
+                           Style="{StaticResource TextBlockInBtn}"
+                           TextDecorations="Underline"
+                           Foreground="{StaticResource FillAccentuation}"/> 
             </StackPanel>
         </Button>
 
         <Button x:Name="AddStaffBtn"
- Grid.Column="6"
+                Style="{StaticResource ButtonAddOrSave}"
+ Grid.Column="3"
  Grid.Row="20"
  Click="AddStaffBtn_Click">
             <StackPanel Orientation="Horizontal"
@@ -211,8 +212,9 @@ Style="{StaticResource TextBlockInBtn}"/>
   VerticalAlignment="Center">
                 <Image Style="{StaticResource AddIm}" 
    Margin="7"/>
-                <TextBlock Text=" Добавить сотрудника" VerticalAlignment="Center" 
-Style="{StaticResource TextBlockInBtn}"/>
+                <TextBlock Text=" Добавить сотрудника" VerticalAlignment="Center"
+                           Style="{StaticResource TextBlockInBtn}"
+                           Foreground="White"/>
             </StackPanel>
         </Button>
     </Grid>

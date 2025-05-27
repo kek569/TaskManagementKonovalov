@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -348,7 +348,6 @@
     <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\ResetPasswordLight.png" />
     <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\SaveLight.png" />
     <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\SendMessagesLight.png" />
-    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\SettingsLight.png" />
     <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\TwoPersonalLight.png" />
   </ItemGroup>
   <ItemGroup>
@@ -358,6 +357,16 @@
     <Resource Include="SaveFolder\Save.txt" />
     <Resource Include="SaveFolder\SavePathDictionary.txt" />
     <Resource Include="SaveFolder\SaveThemeSettings.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\ReportLight.png" />
+    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\HistoryTaskLight.png" />
+    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\TaskLight.png" />
+    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\SearchLight.png" />
+    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\StaffLight.png" />
+    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\EllipseLight.png" />
+    <Resource Include="ResourceFolder\ImageFolder\Logo.png" />
+    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\CloseLight.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataFolder\DBModel.Context.tt">
@@ -370,14 +379,9 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
-    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\ReportLight.png" />
-    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\HistoryTaskLight.png" />
-    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\TaskLight.png" />
-    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\SearchLight.png" />
-    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\StaffLight.png" />
-    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\EllipseLight.png" />
-    <Resource Include="ResourceFolder\ImageFolder\Logo.png" />
-    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\CloseLight.png" />
+    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\SettingsLight.png" />
+    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\CollapseLight.png" />
+    <Resource Include="ResourceFolder\ImageFolder\Add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

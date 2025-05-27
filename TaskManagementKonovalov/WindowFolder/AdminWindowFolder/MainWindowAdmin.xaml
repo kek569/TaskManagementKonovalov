@@ -35,11 +35,17 @@
             <Image x:Name="CloseIm"
            Grid.Row="1"
            Style="{DynamicResource CloseIm}"
+                   Width="35"
+                   Height="35"
            MouseLeftButtonDown="CloseIm_MouseLeftButtonDown"/>
-            <Image x:Name="LogoIm"
-            Style="{DynamicResource LogoIm}"
-               Height="63"
-               Width="63" Grid.RowSpan="2"/>
+
+            <Image x:Name="CollapseIm"
+Grid.Row="1"
+Style="{DynamicResource CollapseIm}"
+        Width="35"
+        Height="3"
+                   Margin="10, 10, 65, 10"
+MouseLeftButtonDown="CloseIm_MouseLeftButtonDown"/>
 
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
@@ -81,19 +87,37 @@
                        Width="90"
                        MouseLeftButtonDown="PersonalIm_MouseLeftButtonDown"/>
 
-                    <Label x:Name="FullNameLb"
+                    <Label x:Name="FerstNameLb"
                            Grid.Row="3"
-                       Content="Иванов&#10;Иван&#10;Иванович"
-                       HorizontalContentAlignment="Left"
+                       Content="Иванов"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
                        FontSize="20"
                        Style="{StaticResource LabelNormal}"
                        Margin="0"/>
+
+                    <Label x:Name="LasteNameLb"
+       Grid.Row="3"
+   Content="Иван"
+       HorizontalAlignment="Center"
+   FontSize="20"
+   Style="{StaticResource LabelNormal}"
+   Margin="0"/>
+
+                    <Label x:Name="MiddleNameLb"
+    Grid.Row="3"
+Content="Иванович"
+    HorizontalAlignment="Center"
+                           VerticalAlignment="Bottom"
+FontSize="20"
+Style="{StaticResource LabelNormal}"
+Margin="0"/>
 
                     <Label Content="Администратор"
                            FontSize="20"
                        Style="{StaticResource LabelNormal}"
                        VerticalContentAlignment="Top"
-                       HorizontalContentAlignment="Left"
+                           HorizontalAlignment="Center"
                        Grid.Row="2"
                        Grid.ColumnSpan="3"
                        Margin="0"/>
@@ -210,34 +234,6 @@ Margin="10"/>
                     </Grid>
                 </StackPanel>
 
-                <Button x:Name="BackBtn"
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    VerticalAlignment="Top"
-                    Width="125"
-                    Height="30"
-                        Click="BackBtn_Click" Grid.ColumnSpan="2" Margin="42,510,42,0">
-                    <StackPanel Orientation="Horizontal"
- HorizontalAlignment="Left"
- VerticalAlignment="Center">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="35"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Style="{StaticResource BackIm}"
-                            Grid.Column="1"
-Margin="5"/>
-                            <TextBlock Text="Назад"
-                                Grid.Column="2"
-                                FontSize="18"
-    Style="{StaticResource TextBlockInBtn}"/>
-                        </Grid>
-                    </StackPanel>
-                </Button>
-
                 <Frame x:Name="MainFrame"
                    Grid.Row="1"
                    Grid.Column="4"
@@ -247,9 +243,9 @@ Margin="5"/>
 
                 <Image x:Name="CloseMenuIm"
                    Source="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/Air.png"
-                   Grid.ColumnSpan="6"
+                   Grid.ColumnSpan="5"
                    Grid.RowSpan="5"
-                   MouseLeftButtonDown="CloseMenuIm_MouseLeftButtonDown"/>
+                   MouseLeftButtonDown="CloseMenuIm_MouseLeftButtonDown" Grid.Column="1" Margin="0,-7,-10,7"/>
 
                 <Grid x:Name="MenuGr"
                   Grid.ColumnSpan="5"
@@ -328,7 +324,6 @@ Margin="5"/>
                                 <RowDefinition Height="70"/>
                             </Grid.RowDefinitions>
                             <Button x:Name="InformationPersonalBtn"
-                                    Style="{StaticResource ButtonInMenu}"
                                     Click="InformationPersonalBtn_Click">
                                 <StackPanel Orientation="Horizontal"
  HorizontalAlignment="Left"
@@ -352,7 +347,6 @@ Margin="10"/>
                             </Button>
 
                             <Button x:Name="SettingsBtn"
-                                    Style="{StaticResource ButtonInMenu}"
                                 Grid.Row="2"
                                 Click="SettingsBtn_Click">
                                 <StackPanel Orientation="Horizontal"
@@ -377,7 +371,6 @@ Margin="10"/>
                             </Button>
 
                             <Button x:Name="ChangeUserBtn"
-                                    Style="{StaticResource ButtonInMenu}"
                                 Grid.Row="4"
                                     Click="ChangeUserBtn_Click">
                                 <StackPanel Orientation="Horizontal"

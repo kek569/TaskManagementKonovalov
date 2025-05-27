@@ -18,6 +18,7 @@ namespace TaskManagementKonovalov.DataFolder
         public Project()
         {
             this.ChatProject = new HashSet<ChatProject>();
+            this.Task = new HashSet<Task>();
         }
     
         public int IdProject { get; set; }
@@ -26,11 +27,13 @@ namespace TaskManagementKonovalov.DataFolder
         public string TargetProject { get; set; }
         public string DescriptionsProject { get; set; }
         public int IdStaff { get; set; }
-        public int IdTask { get; set; }
+        public int IdStatusDelete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChatProject> ChatProject { get; set; }
         public virtual Staff Staff { get; set; }
-        public virtual Task Task { get; set; }
+        public virtual StatusDelete StatusDelete { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Task> Task { get; set; }
     }
 }

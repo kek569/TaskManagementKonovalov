@@ -74,7 +74,7 @@
           <Property Name="TargetProject" Type="nvarchar" MaxLength="80" Nullable="false" />
           <Property Name="DescriptionsProject" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="IdStaff" Type="int" Nullable="false" />
-          <Property Name="IdTask" Type="int" Nullable="false" />
+          <Property Name="IdStatusDelete" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Report">
           <Key>
@@ -175,6 +175,7 @@
           <Property Name="DateDeadline" Type="date" />
           <Property Name="DateStartTask" Type="date" Nullable="false" />
           <Property Name="Documents" Type="varbinary(max)" Nullable="false" />
+          <Property Name="IdProject" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -235,15 +236,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Project_Task">
-          <End Role="Task" Type="Self.Task" Multiplicity="1" />
+        <Association Name="FK_Project_StatusDelete">
+          <End Role="StatusDelete" Type="Self.StatusDelete" Multiplicity="1" />
           <End Role="Project" Type="Self.Project" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Task">
-              <PropertyRef Name="IdTask" />
+            <Principal Role="StatusDelete">
+              <PropertyRef Name="IdStatusDelete" />
             </Principal>
             <Dependent Role="Project">
-              <PropertyRef Name="IdTask" />
+              <PropertyRef Name="IdStatusDelete" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -367,6 +368,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Task_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="IdProject" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdProject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Task_Staff">
           <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
@@ -487,8 +500,8 @@
             <End Role="Staff" EntitySet="Staff" />
             <End Role="Project" EntitySet="Project" />
           </AssociationSet>
-          <AssociationSet Name="FK_Project_Task" Association="Self.FK_Project_Task">
-            <End Role="Task" EntitySet="Task" />
+          <AssociationSet Name="FK_Project_StatusDelete" Association="Self.FK_Project_StatusDelete">
+            <End Role="StatusDelete" EntitySet="StatusDelete" />
             <End Role="Project" EntitySet="Project" />
           </AssociationSet>
           <AssociationSet Name="FK_Report_Staff" Association="Self.FK_Report_Staff">
@@ -529,6 +542,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Task_Prirority" Association="Self.FK_Task_Prirority">
             <End Role="Prirority" EntitySet="Prirority" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Project" Association="Self.FK_Task_Project">
+            <End Role="Project" EntitySet="Project" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
           <AssociationSet Name="FK_Task_Staff" Association="Self.FK_Task_Staff">
@@ -644,10 +661,11 @@
           <Property Name="TargetProject" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DescriptionsProject" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdStaff" Type="Int32" Nullable="false" />
-          <Property Name="IdTask" Type="Int32" Nullable="false" />
+          <Property Name="IdStatusDelete" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ChatProject" Relationship="Self.FK_ChatProject_Project1" FromRole="Project" ToRole="ChatProject" />
           <NavigationProperty Name="Staff" Relationship="Self.FK_Project_Staff" FromRole="Project" ToRole="Staff" />
-          <NavigationProperty Name="Task" Relationship="Self.FK_Project_Task" FromRole="Project" ToRole="Task" />
+          <NavigationProperty Name="StatusDelete" Relationship="Self.FK_Project_StatusDelete" FromRole="Project" ToRole="StatusDelete" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_Task_Project" FromRole="Project" ToRole="Task" />
         </EntityType>
         <EntityType Name="Report">
           <Key>
@@ -717,6 +735,7 @@
           </Key>
           <Property Name="IdStatusDelete" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameStatusDelete" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_Project_StatusDelete" FromRole="StatusDelete" ToRole="Project" />
           <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_StatusDelete" FromRole="StatusDelete" ToRole="Staff" />
           <NavigationProperty Name="Task" Relationship="Self.FK_Task_StatusDelete" FromRole="StatusDelete" ToRole="Task" />
           <NavigationProperty Name="User" Relationship="Self.FK_User_StatusDelete" FromRole="StatusDelete" ToRole="User" />
@@ -767,10 +786,11 @@
           <Property Name="DateDeadline" Type="DateTime" Precision="0" />
           <Property Name="DateStartTask" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Documents" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="IdProject" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Task_Category" FromRole="Task" ToRole="Category" />
           <NavigationProperty Name="CheckSheet" Relationship="Self.FK_Task_CheckSheet" FromRole="Task" ToRole="CheckSheet" />
           <NavigationProperty Name="Prirority" Relationship="Self.FK_Task_Prirority" FromRole="Task" ToRole="Prirority" />
-          <NavigationProperty Name="Project" Relationship="Self.FK_Project_Task" FromRole="Task" ToRole="Project" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_Task_Project" FromRole="Task" ToRole="Project" />
           <NavigationProperty Name="Staff" Relationship="Self.FK_Task_Staff" FromRole="Task" ToRole="Staff" />
           <NavigationProperty Name="StatusDeadline" Relationship="Self.FK_Task_StatusDeadline" FromRole="Task" ToRole="StatusDeadline" />
           <NavigationProperty Name="StatusDelete" Relationship="Self.FK_Task_StatusDelete" FromRole="Task" ToRole="StatusDelete" />
@@ -923,15 +943,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Project_Task">
-          <End Role="Task" Type="Self.Task" Multiplicity="1" />
+        <Association Name="FK_Project_StatusDelete">
+          <End Role="StatusDelete" Type="Self.StatusDelete" Multiplicity="1" />
           <End Role="Project" Type="Self.Project" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Task">
-              <PropertyRef Name="IdTask" />
+            <Principal Role="StatusDelete">
+              <PropertyRef Name="IdStatusDelete" />
             </Principal>
             <Dependent Role="Project">
-              <PropertyRef Name="IdTask" />
+              <PropertyRef Name="IdStatusDelete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="IdProject" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdProject" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1119,9 +1151,13 @@
             <End Role="Staff" EntitySet="Staff" />
             <End Role="Project" EntitySet="Project" />
           </AssociationSet>
-          <AssociationSet Name="FK_Project_Task" Association="Self.FK_Project_Task">
-            <End Role="Task" EntitySet="Task" />
+          <AssociationSet Name="FK_Project_StatusDelete" Association="Self.FK_Project_StatusDelete">
+            <End Role="StatusDelete" EntitySet="StatusDelete" />
             <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Project" Association="Self.FK_Task_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Task" EntitySet="Task" />
           </AssociationSet>
           <AssociationSet Name="FK_Report_Staff" Association="Self.FK_Report_Staff">
             <End Role="Staff" EntitySet="Staff" />
@@ -1246,7 +1282,7 @@
                 <ScalarProperty Name="TargetProject" ColumnName="TargetProject" />
                 <ScalarProperty Name="DescriptionsProject" ColumnName="DescriptionsProject" />
                 <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
-                <ScalarProperty Name="IdTask" ColumnName="IdTask" />
+                <ScalarProperty Name="IdStatusDelete" ColumnName="IdStatusDelete" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1356,6 +1392,7 @@
                 <ScalarProperty Name="DateDeadline" ColumnName="DateDeadline" />
                 <ScalarProperty Name="DateStartTask" ColumnName="DateStartTask" />
                 <ScalarProperty Name="Documents" ColumnName="Documents" />
+                <ScalarProperty Name="IdProject" ColumnName="IdProject" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

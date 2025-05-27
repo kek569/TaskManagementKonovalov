@@ -3,14 +3,14 @@
 
     <SolidColorBrush x:Key="FillFon" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="FillFont" Color="#3F4447"/>
-    <SolidColorBrush x:Key="FillFontOne" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="FillFontOne" Color="#3F4447"/>
     <SolidColorBrush x:Key="FillAccentuation" Color="#006DE1"/>
     <SolidColorBrush x:Key="FillAccentuationOne" Color="#00000000"/>
     <SolidColorBrush x:Key="FillLup" Color="#FFFFFF"/>
     <SolidColorBrush x:Key="FillTextBorder" Color="#3F4447"/>
     <SolidColorBrush x:Key="FillFonLb" Color="#DFDCF4"/>
     <SolidColorBrush x:Key="FillLineLb" Color="#C6C0F2"/>
-    <SolidColorBrush x:Key="FillBackground" Color="#F5F6F7"/>
+    <SolidColorBrush x:Key="FillBackground" Color="#F0F2F3"/>
 
     <Style x:Key="FonBorder"
    TargetType="Border">
@@ -23,6 +23,15 @@
     <Style x:Key="CloseIm" TargetType="Image">
         <Setter Property="Source" 
         Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/LightThemeImageFolder/CloseLight.png"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+    </Style>
+
+    <Style x:Key="CollapseIm" TargetType="Image">
+        <Setter Property="Source" 
+    Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/LightThemeImageFolder/CollapseLight.png"/>
         <Setter Property="Width" Value="40"/>
         <Setter Property="Height" Value="40"/>
         <Setter Property="Margin" Value="10"/>
@@ -50,7 +59,7 @@
 
     <Style x:Key="AddIm" TargetType="Image">
         <Setter Property="Source" 
-  Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/LightThemeImageFolder/AddLight.png"/>
+  Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/Add.png"/>
     </Style>
 
     <Style x:Key="ApplicationsIm" TargetType="Image">
@@ -90,7 +99,7 @@ Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/LightThemeI
 
     <Style x:Key="LoadPhotoIm" TargetType="Image">
         <Setter Property="Source" 
-Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/LightThemeImageFolder/LoadPhotoLight.png"/>
+Value="/TaskManagementKonovalov;component/ResourceFolder/ImageFolder/DarkThemeImageFolder/LoadPhotoDark.png"/>
     </Style>
 
     <Style x:Key="ResetPasswordIm" TargetType="Image">
@@ -552,11 +561,11 @@ SnapsToDevicePixels="True">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Border   
-             Background="{x:Null}"   
+             Background="{StaticResource FillBackground}"   
              x:Name="border"   
              CornerRadius="0,10,10,0"   
              BorderThickness="0,1,1,1"  
-             BorderBrush="{StaticResource FillAccentuation}">
+             BorderBrush="{x:Null}">
                         <ContentPresenter />
                     </Border>
                 </ControlTemplate>
@@ -571,8 +580,8 @@ SnapsToDevicePixels="True">
                     <Grid>
                         <Border CornerRadius="10,0,0,10"  
                BorderThickness="1,1,0,1"  
-               Background="{x:Null}"  
-               BorderBrush="{StaticResource FillAccentuation}">
+               Background="{StaticResource FillBackground}"  
+               BorderBrush="{x:Null}">
                             <ScrollViewer x:Name="PART_ContentHost"/>
                         </Border>
                     </Grid>
@@ -595,9 +604,9 @@ SnapsToDevicePixels="True">
         <Setter Property="Margin"
         Value="10"/>
         <Setter Property="Background" 
-        Value="{StaticResource FillAccentuation}"/>
+        Value="{x:Null}"/>
         <Setter Property="BorderBrush"
-        Value="{StaticResource FillAccentuation}"/>
+        Value="{x:Null}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
@@ -622,7 +631,7 @@ SnapsToDevicePixels="True">
                   HorizontalAlignment="Center"  
                   VerticalAlignment="Center"  
                   Data="M 0 0 L 6 6 L 12 0 Z"  
-                  Fill="{StaticResource FillFont}" />
+                  Fill="{StaticResource FillAccentuation}"/>
                         </ToggleButton>
                         <ContentPresenter Name="ContentSite"  
                Content="{TemplateBinding SelectionBoxItem}"  
@@ -645,8 +654,8 @@ SnapsToDevicePixels="True">
                    x:Name="DropDownBorder"  
                    BorderThickness="1"  
                    CornerRadius="0"  
-                   BorderBrush="White"
-                                    Background="{StaticResource FillFon}"/>
+                   BorderBrush="{StaticResource FillBackground}"
+                                    Background="{StaticResource FillBackground}"/>
                                 <ScrollViewer Margin="0,0,0,0" SnapsToDevicePixels="True">
                                     <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
                                 </ScrollViewer>
@@ -684,7 +693,7 @@ Value="{StaticResource FillFont}"/>
                                             <TranslateTransform X="0" Y="0"/>
                                         </TransformGroup>
                                     </RadialGradientBrush.RelativeTransform>
-                                    <GradientStop Offset="1" Color="#F5F6F7"/>
+                                    <GradientStop Offset="1" Color="#F0F2F3"/>
                                 </RadialGradientBrush>
                             </Border.Background>
                             <ContentPresenter HorizontalAlignment="Center"
@@ -715,6 +724,71 @@ Value="{StaticResource FillFont}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource FillAccentuation}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ButtonAddOrSave" TargetType="Button">
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Inter"/>
+        <Setter Property="Background" Value="{StaticResource FillBackground}"/>
+        <Setter Property="Foreground" Value="{StaticResource FillFon}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource FillAccentuation}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="grid">
+                        <Border x:Name="border" CornerRadius="10" BorderThickness="2">
+                            <Border.Background>
+                                <RadialGradientBrush GradientOrigin="0,0.5">
+                                    <RadialGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterX="0" CenterY="0.5" ScaleX="1" ScaleY="10"/>
+                                            <TranslateTransform X="0" Y="0"/>
+                                        </TransformGroup>
+                                    </RadialGradientBrush.RelativeTransform>
+                                    <GradientStop Offset="1" Color="#006DE1"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  TextElement.FontWeight="Bold">
+                            </ContentPresenter>
+                        </Border>
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border">
+                                <Setter.Value>
+                                    <RadialGradientBrush GradientOrigin="0,0.5">
+                                        <RadialGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterX="0" CenterY="0.5" ScaleX="1" ScaleY="10"/>
+                                                <TranslateTransform X="0" Y="0"/>
+                                            </TransformGroup>
+                                        </RadialGradientBrush.RelativeTransform>
+                                        <GradientStop Color="#006DE1" Offset="1"/>
+                                    </RadialGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
@@ -872,18 +946,9 @@ Value="{StaticResource FillAccentuation}"/>
         <Setter Property="Foreground" Value="{StaticResource FillFont}"/>
         <Setter Property="IsTodayHighlighted" Value="True"/>
         <Setter Property="SelectedDateFormat" Value="Short"/>
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="Background" Value="{StaticResource FillBackground}"/>
         <Setter Property="Padding" Value="2"/>
-        <Setter Property="BorderBrush">
-            <Setter.Value>
-                <LinearGradientBrush EndPoint=".5,0" StartPoint=".5,1">
-                    <GradientStop Color="#8300EE" Offset="0"/>
-                    <GradientStop Color="#8300EE" Offset="0.375"/>
-                    <GradientStop Color="#8300EE" Offset="0.375"/>
-                    <GradientStop Color="#8300EE" Offset="1"/>
-                </LinearGradientBrush>
-            </Setter.Value>
-        </Setter>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="Template">
@@ -905,9 +970,9 @@ Value="{StaticResource FillAccentuation}"/>
                             <Grid.Resources>
                                 <SolidColorBrush x:Key="DisabledBrush" Color="#A5FFFFFF"/>
                                 <ControlTemplate x:Key="DropDownButtonTemplate" TargetType="{x:Type Button}">
-                                    <Grid Background="{StaticResource FillFon}" FlowDirection="LeftToRight" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="32" Height="32">
-                                        <Path Fill="#26c9ff"  HorizontalAlignment="Center"  Stretch="Fill" VerticalAlignment="Center"  Data="M 890.127 145.672 h -43.389 V 132.78 c 0 -38.644 -31.466 -70.234 -69.922 -70.234 h -1.032 c -38.458 0 -69.922 31.59 -69.922 70.234 v 12.892 h -386.7 V 132.78 c 0 -38.644 -31.465 -70.234 -69.922 -70.234 h -1.063 c -38.457 0 -69.923 31.59 -69.923 70.234 v 12.892 h -43.296 c -38.458 0 -69.923 31.622 -69.923 70.207 v 671.446 c 0 38.644 31.466 70.236 69.923 70.236 h 755.17 c 38.458 0 69.922 -31.592 69.922 -70.236 V 215.879 c 0 -38.585 -31.464 -70.207 -69.923 -70.207 Z M 733.83 132.78 c 0 -23.222 18.793 -42.139 41.954 -42.139 h 1.032 c 23.13 0 41.954 18.918 41.954 42.139 v 124.927 c 0 23.224 -18.824 42.14 -41.954 42.14 h -1.032 c -23.161 0 -41.954 -18.916 -41.954 -42.14 V 132.779 Z m -527.607 0 c 0 -23.222 18.793 -42.139 41.955 -42.139 h 1.063 c 23.098 0 41.954 18.918 41.954 42.139 v 124.927 c 0 23.224 -18.856 42.14 -41.954 42.14 h -1.063 c -23.162 0 -41.955 -18.916 -41.955 -42.14 V 132.779 Z m 683.904 768.626 H 134.958 c -7.585 0 -13.985 -6.525 -13.985 -14.08 V 393.649 h 783.138 v 493.676 c 0 7.555 -6.399 14.08 -13.984 14.08 Z" />
-                                        <Path Fill="#26c9ff" Margin="7" HorizontalAlignment="Center" Stretch="Fill" VerticalAlignment="Center"  Data="M 223.755 494.2 H 352.78 v 63.488 H 223.755 V 494.2 Z M 449.035 494.2 h 128 v 63.488 h -128 V 494.2 Z M 673.291 494.2 h 125.952 v 63.488 H 673.291 V 494.2 Z M 223.755 623.224 H 352.78 v 62.464 H 223.755 v -62.464 Z M 449.035 623.224 h 128 v 62.464 h -128 v -62.464 Z M 673.291 623.224 h 125.952 v 62.464 H 673.291 v -62.464 Z M 223.755 749.176 H 352.78 v 65.536 H 223.755 v -65.536 Z M 449.035 749.176 h 128 v 65.536 h -128 v -65.536 Z M 673.291 749.176 h 125.952 v 65.536 H 673.291 v -65.536 Z" StrokeThickness="2"/>
+                                    <Grid Background="{StaticResource FillBackground}" FlowDirection="LeftToRight" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="32" Height="32">
+                                        <Path Fill="#006DE1"  HorizontalAlignment="Center"  Stretch="Fill" VerticalAlignment="Center"  Data="M 890.127 145.672 h -43.389 V 132.78 c 0 -38.644 -31.466 -70.234 -69.922 -70.234 h -1.032 c -38.458 0 -69.922 31.59 -69.922 70.234 v 12.892 h -386.7 V 132.78 c 0 -38.644 -31.465 -70.234 -69.922 -70.234 h -1.063 c -38.457 0 -69.923 31.59 -69.923 70.234 v 12.892 h -43.296 c -38.458 0 -69.923 31.622 -69.923 70.207 v 671.446 c 0 38.644 31.466 70.236 69.923 70.236 h 755.17 c 38.458 0 69.922 -31.592 69.922 -70.236 V 215.879 c 0 -38.585 -31.464 -70.207 -69.923 -70.207 Z M 733.83 132.78 c 0 -23.222 18.793 -42.139 41.954 -42.139 h 1.032 c 23.13 0 41.954 18.918 41.954 42.139 v 124.927 c 0 23.224 -18.824 42.14 -41.954 42.14 h -1.032 c -23.161 0 -41.954 -18.916 -41.954 -42.14 V 132.779 Z m -527.607 0 c 0 -23.222 18.793 -42.139 41.955 -42.139 h 1.063 c 23.098 0 41.954 18.918 41.954 42.139 v 124.927 c 0 23.224 -18.856 42.14 -41.954 42.14 h -1.063 c -23.162 0 -41.955 -18.916 -41.955 -42.14 V 132.779 Z m 683.904 768.626 H 134.958 c -7.585 0 -13.985 -6.525 -13.985 -14.08 V 393.649 h 783.138 v 493.676 c 0 7.555 -6.399 14.08 -13.984 14.08 Z" />
+                                        <Path Fill="#006DE1" Margin="7" HorizontalAlignment="Center" Stretch="Fill" VerticalAlignment="Center"  Data="M 223.755 494.2 H 352.78 v 63.488 H 223.755 V 494.2 Z M 449.035 494.2 h 128 v 63.488 h -128 V 494.2 Z M 673.291 494.2 h 125.952 v 63.488 H 673.291 V 494.2 Z M 223.755 623.224 H 352.78 v 62.464 H 223.755 v -62.464 Z M 449.035 623.224 h 128 v 62.464 h -128 v -62.464 Z M 673.291 623.224 h 125.952 v 62.464 H 673.291 v -62.464 Z M 223.755 749.176 H 352.78 v 65.536 H 223.755 v -65.536 Z M 449.035 749.176 h 128 v 65.536 h -128 v -65.536 Z M 673.291 749.176 h 125.952 v 65.536 H 673.291 v -65.536 Z" StrokeThickness="2"/>
                                     </Grid>
                                 </ControlTemplate>
                             </Grid.Resources>

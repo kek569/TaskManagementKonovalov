@@ -17,6 +17,7 @@ namespace TaskManagementKonovalov.DataFolder
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public StatusDelete()
         {
+            this.Project = new HashSet<Project>();
             this.Staff = new HashSet<Staff>();
             this.Task = new HashSet<Task>();
             this.User = new HashSet<User>();
@@ -25,6 +26,8 @@ namespace TaskManagementKonovalov.DataFolder
         public int IdStatusDelete { get; set; }
         public string NameStatusDelete { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Project> Project { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Staff> Staff { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

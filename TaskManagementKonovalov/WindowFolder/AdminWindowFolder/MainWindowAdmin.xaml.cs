@@ -88,9 +88,9 @@ namespace TaskManagementKonovalov.WindowFolder.AdminWindowFolder
                 }
             }
 
-            FullNameLb.Content = staff.LastNameStaff.ToString() + "\n" +
-                staff.FirstNameStaff.ToString() + "\n" +
-            staff.MiddleNameStaff.ToString();
+            FerstNameLb.Content = staff.LastNameStaff.ToString();
+            LasteNameLb.Content = staff.FirstNameStaff.ToString();
+            MiddleNameLb.Content = staff.MiddleNameStaff.ToString();
 
             CopyFullNameLb.Content = staff.LastNameStaff.ToString() + "\n" +
                 staff.FirstNameStaff.ToString() + "\n" +

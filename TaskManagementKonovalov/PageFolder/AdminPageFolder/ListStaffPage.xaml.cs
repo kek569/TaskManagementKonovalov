@@ -36,14 +36,12 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
             InitializeComponent();
             StaffListB.ItemsSource = DBEntities.GetContext()
                         .Staff.ToList().OrderBy(s => s.IdStaff);
+
+            FilterCb.Items.Add("Фильтрация");
+            FilterCb.SelectedIndex = 0;
         }
 
         private string path;
-
-        private void AddStaffMi_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AddStaffPage());
-        }
 
         private void EditStaffMi_Click(object sender, RoutedEventArgs e)
         {
@@ -138,7 +136,7 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
 
         private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            try
+            /*try
             {
                 StaffListB.ItemsSource = DataFolder.DBEntities.GetContext().Staff.
                     Where(s => s.FirstNameStaff.StartsWith(SearchTb.Text) ||
@@ -150,12 +148,17 @@ namespace TaskManagementKonovalov.PageFolder.AdminPageFolder
             catch (Exception ex)
             {
                 MBClass.ErrorMB(ex);
-            }
+            }*/
         }
 
         private void ViewerStaffMi_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void AddStaffBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddStaffPage());
         }
     }
 }
