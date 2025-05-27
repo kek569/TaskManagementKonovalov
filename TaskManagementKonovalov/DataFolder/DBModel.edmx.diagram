@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ea5237efe94248bfb5b2b3b9e957000e" Name="Diagram1">
+      <Diagram DiagramId="ccc3adfddf0a4e52b6e2bdb43a81dbcf" Name="Diagram1">
         <EntityTypeShape EntityType="DBModel.Category" Width="1.5" PointX="9" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.ChatProject" Width="1.5" PointX="11.25" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DBModel.CheckSheet" Width="1.5" PointX="9" PointY="4" IsExpanded="true" />

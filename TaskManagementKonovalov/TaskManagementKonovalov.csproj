@@ -369,6 +369,11 @@
     <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\CloseLight.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\SettingsLight.png" />
+    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\CollapseLight.png" />
+    <Resource Include="ResourceFolder\ImageFolder\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DataFolder\DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBModel.edmx</DependentUpon>
@@ -379,9 +384,6 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
-    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\SettingsLight.png" />
-    <Resource Include="ResourceFolder\ImageFolder\LightThemeImageFolder\CollapseLight.png" />
-    <Resource Include="ResourceFolder\ImageFolder\Add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
